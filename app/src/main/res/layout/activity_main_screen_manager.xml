@@ -1,0 +1,82 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="yaxstudio.com.fermanexport.MainScreenManagerActivity">
+
+    <include layout="@layout/header" android:id="@+id/header" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="240dp"
+        android:background="@drawable/layout_shadow"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp"
+        android:id="@+id/dashboardRelativeLayout">
+
+        <SearchView
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:id="@+id/txtPackageSearchBox"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/button_search_shape"
+            android:layout_marginTop="15dp"/>
+
+        <TextView
+            android:id="@+id/lblUSAClients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="USA Redy To Deliver:"
+            android:textColor="@color/whiteDefault"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="15dp"/>
+
+        <TextView
+            android:id="@+id/txtUSAClientPKGS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Count"
+            android:textColor="@color/whiteDefault"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"/>
+
+        <TextView
+            android:id="@+id/lblHNClients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="HN Redy To Deliver:"
+            android:textColor="@color/whiteDefault"
+            android:layout_below="@+id/lblUSAClients"
+            android:layout_alignRight="@+id/lblUSAClients"
+            android:layout_marginTop="50dp" />
+
+        <TextView
+            android:id="@+id/txtHNClientPKGS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Count"
+            android:textColor="@color/whiteDefault"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/txtUSAClientPKGS"
+            android:layout_marginTop="50dp"/>
+
+    </RelativeLayout>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="265dp"
+        android:id="@+id/lstMSPackage"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/dashboardRelativeLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

@@ -1,0 +1,202 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="yaxstudio.com.fermanexport.PackageDetailsActivity">
+
+    <include layout="@layout/header" android:id="@+id/header" />
+
+<!-- ##############################  PACKAGE ID START ############################## -->
+    <TextView
+        android:id="@+id/lblPDPackageID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="40dp"
+        android:text="Package ID"
+        android:textSize="12dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/txtPDPackageID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblPDPackageID"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Content"
+        android:textSize="14dp" />
+
+<!-- ##############################  SERVICE CARRIER START ############################## -->
+
+    <TextView
+        android:id="@+id/lblPDServiceCarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblPDPackageID"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="50dp"
+        android:text="Service Carrier"
+        android:textSize="12dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtPDServiceCarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblPDServiceCarrier"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Content"
+        android:textSize="14dp" />
+
+<!-- ##############################  TRACKING NUMBER START ############################## -->
+
+    <TextView
+        android:id="@+id/lblPDTrackingNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblPDPackageID"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="50dp"
+        android:text="Tracking Number"
+        android:textSize="12dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtPDTrackingNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblPDTrackingNumber"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Content"
+        android:textSize="14dp" />
+
+<!-- ##############################  PORT ARRIVE DATE START ############################## -->
+
+    <TextView
+        android:id="@+id/lblPDPortArriveDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblPDServiceCarrier"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="60dp"
+        android:text="Estimate Port Arrive Date"
+        android:textSize="12dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtPDPortArriveDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblPDPortArriveDate"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Content"
+        android:textSize="14dp" />
+
+<!-- ##############################  DELIVERY DATE START ############################## -->
+
+    <TextView
+        android:id="@+id/lblPDDeliveryDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblPDServiceCarrier"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="60dp"
+        android:text="Estimate Delivery Date"
+        android:textSize="12dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtPDDeliveryDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblPDDeliveryDate"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Content"
+        android:textSize="14dp" />
+
+<!-- ##############################  SHIPPING PRICE START ############################## -->
+
+    <TextView
+        android:id="@+id/lblPDShippingPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblPDPortArriveDate"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="60dp"
+        android:text="Shipping Price"
+        android:textSize="12dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtPDShippingPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblPDShippingPrice"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Content"
+        android:textSize="14dp" />
+
+<!-- ##############################  PAYMENT STATUS START ############################## -->
+
+    <TextView
+        android:id="@+id/lblPDPaymentStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblPDPortArriveDate"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="60dp"
+        android:text="Payment Made"
+        android:textSize="12dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtPDPaymentStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblPDPaymentStatus"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Content"
+        android:textSize="14dp" />
+
+<!-- ##############################  PACKAGE DETAILS START ############################## -->
+
+    <TextView
+        android:id="@+id/lblPDDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblPDShippingPrice"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="40dp"
+        android:text="Package Details"
+        android:textSize="12dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtPDDetails"
+        android:layout_width="365dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/lblPDDetails"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Content"
+        android:textSize="14dp" />
+
+</RelativeLayout>

@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="yaxstudio.com.fermanexport.UserProfileActivity">
+
+    <include layout="@layout/header" android:id="@+id/header"/>
+
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/header"
+        android:layout_marginTop="60dp"
+        android:id="@+id/txtUPUserID"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/txtUPPhoneNumber"
+        android:layout_marginTop="50dp"
+        android:id="@+id/txtUPUserRole"
+        android:gravity="center"/>
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/header"
+        android:layout_marginTop="120dp"
+        android:id="@+id/txtUPFullName"
+        android:gravity="center"/>
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/txtUPFullName"
+        android:layout_marginTop="50dp"
+        android:id="@+id/txtUPUsername"
+        android:gravity="center"/>
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/txtUPUsername"
+        android:layout_marginTop="50dp"
+        android:id="@+id/txtUPEmail"
+        android:gravity="center"/>
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/txtUPEmail"
+        android:layout_marginTop="50dp"
+        android:id="@+id/txtUPPhoneNumber"
+        android:gravity="center"/>
+
+</RelativeLayout>

@@ -1,0 +1,120 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="yaxstudio.com.fermanexport.RegisterActivity">
+
+    <include layout="@layout/header" android:id="@+id/header"/>
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtSIFullName"
+        android:hint="Full Name"
+        android:textStyle="italic"
+        android:textSize="14dp"
+        android:maxLines="1"
+        android:layout_below="@+id/header"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtSIUsername"
+        android:hint="Username"
+        android:textStyle="italic"
+        android:textSize="14dp"
+        android:maxLines="1"
+        android:layout_below="@+id/txtSIFullName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp" />
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:id="@+id/txtSIPassword"
+        android:hint="Password"
+        android:textStyle="italic"
+        android:textSize="14dp"
+        android:maxLines="1"
+        android:layout_below="@+id/txtSIUsername"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp" />
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:id="@+id/txtSIPassword2"
+        android:hint="Retype Password"
+        android:textStyle="italic"
+        android:textSize="14dp"
+        android:maxLines="1"
+        android:layout_below="@+id/txtSIPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp" />
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:id="@+id/txtSIEmail"
+        android:hint="Email"
+        android:textStyle="italic"
+        android:textSize="14dp"
+        android:maxLines="1"
+        android:layout_below="@+id/txtSIPassword2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp" />
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:id="@+id/txtSIPhoneNumber"
+        android:hint="Phone Number"
+        android:textStyle="italic"
+        android:textSize="14dp"
+        android:maxLines="1"
+        android:layout_below="@+id/txtSIEmail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp" />
+
+    <Spinner
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:id="@+id/spinnerClientType"
+        android:layout_below="@+id/txtSIPhoneNumber"
+        android:layout_marginTop="25dp"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:id="@+id/btnSIClearFields"
+        android:textAllCaps="false"
+        android:text="Clear Fields"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/buttonshape"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"/>
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:id="@+id/btnSIRegister"
+        android:textAllCaps="false"
+        android:text="Register"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/buttonshape"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"/>
+
+</RelativeLayout>

@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">Ferman Export</string>
+    <string name="title_activity_login_screen">LoginScreenActivity</string>
+
+    <dimen name="activity_vertical_margin2">0dp</dimen>
+    <dimen name="activity_horizontal_margin2">0dp</dimen>
+
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="title_activity_main_screen">MainScreenActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
+
+<!-- ****************************************************************************************************** -->
+<!-- ****************************************** APP COLORS START ****************************************** -->
+<!-- ****************************************************************************************************** -->
+
+    <color name="shadowColor">#757575</color> <!-- Color Grey # 700 -->
+    <color name="shadowColor2">#9E9E9E</color> <!-- Color Grey # 600 -->
+
+    <color name="btnPressed">#9E9E9E</color> <!-- Color # 500 -->
+    <color name="whiteDefault">#FFFFFF</color> <!-- Color White 100% -->
+
+    <color name="linkTextPressed">#7B1FA2</color>  <!-- Color #700 -->
+    <color name="linkTextDefault">#0288D1</color>  <!-- Color #700 -->
+    <color name="colorHeader">#00838F</color>
+
+    <color name="mainColorPrimary">#00838F</color> <!-- Color # 800 -->
+    <color name="mainColorPrimary2">#0097A7</color> <!-- Color # 700 -->
+    <color name="mainColorPrimary3">#00ACC1</color> <!-- Color # 600 -->
+
+    <color name="mainColorSecondary">#FF8F00</color> <!-- Color # 800 -->
+    <color name="mainColorSecondary2">#FFA000</color> <!-- Color # 700 -->
+    <color name="mainColorSecondary3">#FFB300</color> <!-- Color # 600 -->
+
+    <color name="statusBarColor">#006064</color>
+    <string name="title_activity_admin_main_screen">AdminMainScreenActivity</string>
+    <string name="title_activity_user_profile">UserProfileActivity</string>
+    <string name="title_activity_forgot_password">ForgotPasswordActivity</string>
+    <string name="title_activity_add_package">AddPackageActivity</string>
+    <string name="title_activity_main_screen_admin">MainScreenAdminActivity</string>
+    <string name="title_activity_main_screen_client_usa">MainScreenClientUSAActivity</string>
+    <string name="title_activity_main_screen_manager">MainScreenManagerActivity</string>
+    <string name="title_activity_package_details">PackageDetailsActivity</string>
+    <string name="title_activity_add_package_usa">AddPackageUSAActivity</string>
+    <string name="title_activity_package_details_usa">PackageDetailsUSAActivity</string>
+    <string name="title_activity_main_screen_delivery_team">MainScreenDeliveryTeamActivity</string>
+    <string name="title_activity_register_employee">RegisterEmployeeActivity</string>
+    <string name="title_activity_package_details_delivery_team">PackageDetailsDeliveryTeamActivity
+    </string> <!-- Color # 900 -->
+
+<!-- ****************************************************************************************************** -->
+<!-- ****************************************** APP COLORS END ******************************************** -->
+<!-- ****************************************************************************************************** -->
+
+</resources>

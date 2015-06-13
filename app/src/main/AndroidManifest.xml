@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="yaxstudio.com.fermanexport" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="ANDROID.PERMISSION.SEND_SMS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".LoginScreenActivity"
+            android:label="@string/title_activity_login_screen" >
+        </activity>
+        <activity
+            android:name=".MainScreenActivity"
+            android:label="@string/title_activity_main_screen" >
+        </activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:label="@string/title_activity_register" >
+        </activity>
+        <activity
+            android:name=".UserProfileActivity"
+            android:label="@string/title_activity_user_profile" >
+        </activity>
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:label="@string/title_activity_forgot_password" >
+        </activity>
+        <activity
+            android:name=".AddPackageActivity"
+            android:label="@string/title_activity_add_package" >
+        </activity>
+        <activity
+            android:name=".MainScreenAdminActivity"
+            android:label="@string/title_activity_main_screen_admin" >
+        </activity>
+        <activity
+            android:name=".MainScreenClientUSAActivity"
+            android:label="@string/title_activity_main_screen_client_usa" >
+        </activity>
+        <activity
+            android:name=".MainScreenManagerActivity"
+            android:label="@string/title_activity_main_screen_manager" >
+        </activity>
+        <activity
+            android:name=".PackageDetailsActivity"
+            android:label="@string/title_activity_package_details" >
+        </activity>
+        <activity
+            android:name=".AddPackageUSAActivity"
+            android:label="@string/title_activity_add_package_usa" >
+        </activity>
+        <activity
+            android:name=".PackageDetailsUSAActivity"
+            android:label="@string/title_activity_package_details_usa" >
+        </activity>
+        <activity
+            android:name=".MainScreenDeliveryTeamActivity"
+            android:label="@string/title_activity_main_screen_delivery_team" >
+        </activity>
+        <activity
+            android:name=".RegisterEmployeeActivity"
+            android:label="@string/title_activity_register_employee" >
+        </activity>
+        <activity
+            android:name=".PackageDetailsDeliveryTeamActivity"
+            android:label="@string/title_activity_package_details_delivery_team" >
+        </activity>
+    </application>
+
+</manifest>
