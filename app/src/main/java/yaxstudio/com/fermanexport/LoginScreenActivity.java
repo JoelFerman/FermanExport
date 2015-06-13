@@ -181,43 +181,50 @@ public class LoginScreenActivity extends Activity implements OnClickListener
                     Log.d("Successfully Login!", json.toString());
                     Log.d("USER ROLE", GVRole);
 
+                    switch (GVRole)
+                    {
+                        case "ADMIN":
 
-//                    if (GVRole == "CLIENTHN")
-//                    {
-                        Intent ii = new Intent(LoginScreenActivity.this, MainScreenActivity.class);
-                        GlobalVars.GVUsername = GVUsername;
-                        GlobalVars.GVRole = GVRole;
-                        GlobalVars.GVUserID = GVUserID;
-                        finish();
-                        startActivity(ii);
-//                    }
-//                    else if (json.getString(TAG_ROLE) == "CLIENTUSA")
-//                    {
-//                        Intent intMainScreenClientUSA = new Intent(LoginScreenActivity.this, MainScreenClientUSAActivity.class);
-//                        GlobalVars.GVUsername = GVUsername;
-//                        GlobalVars.GVRole = GVRole;
-//                        GlobalVars.GVUserID = GVUserID;
-//                        finish();
-//                        startActivity(intMainScreenClientUSA);
-//                    }
-//                    else if (json.getString(TAG_ROLE) == "ADMIN")
-//                    {
-//                        Intent intMainScreenAdmin = new Intent(LoginScreenActivity.this, MainScreenAdminActivity.class);
-//                        GlobalVars.GVUsername = GVUsername;
-//                        GlobalVars.GVRole = GVRole;
-//                        GlobalVars.GVUserID = GVUserID;
-//                        finish();
-//                        startActivity(intMainScreenAdmin);
-//                    }
-//                    else if (json.getString(TAG_ROLE) == "MANAGER")
-//                    {
-//                        Intent intMainScreenManager = new Intent(LoginScreenActivity.this, MainScreenManagerActivity.class);
-//                        GlobalVars.GVUsername = GVUsername;
-//                        GlobalVars.GVRole = GVRole;
-//                        GlobalVars.GVUserID = GVUserID;
-//                        finish();
-//                        startActivity(intMainScreenManager);
-//                    }
+                            Intent intMainScreenAdmin = new Intent(LoginScreenActivity.this, MainScreenAdminActivity.class);
+                            GlobalVars.GVUsername = GVUsername;
+                            GlobalVars.GVRole = GVRole;
+                            GlobalVars.GVUserID = GVUserID;
+                            finish();
+                            startActivity(intMainScreenAdmin);
+
+                            break;
+
+                        case "CLIENT":
+
+                            Intent intMainScreenClientHN = new Intent(LoginScreenActivity.this, MainScreenActivity.class);
+                            GlobalVars.GVUsername = GVUsername;
+                            GlobalVars.GVRole = GVRole;
+                            GlobalVars.GVUserID = GVUserID;
+                            finish();
+                            startActivity(intMainScreenClientHN);
+
+                            break;
+
+                        case "CLIENTUSA":
+
+                            Intent intMainScreenClientUSA = new Intent(LoginScreenActivity.this, MainScreenClientUSAActivity.class);
+                            GlobalVars.GVUsername = GVUsername;
+                            GlobalVars.GVRole = GVRole;
+                            GlobalVars.GVUserID = GVUserID;
+                            finish();
+                            startActivity(intMainScreenClientUSA);
+
+                            break;
+
+                        case "MANAGER":
+
+                            Intent intMainScreenManager = new Intent(LoginScreenActivity.this, MainScreenManagerActivity.class);
+                            GlobalVars.GVUsername = GVUsername;
+                            GlobalVars.GVRole = GVRole;
+                            GlobalVars.GVUserID = GVUserID;
+                            finish();
+                            startActivity(intMainScreenManager);
+                    }
 
                     return json.getString(TAG_MESSAGE);
                 }
