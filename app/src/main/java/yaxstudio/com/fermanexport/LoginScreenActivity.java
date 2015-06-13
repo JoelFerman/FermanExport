@@ -182,42 +182,42 @@ public class LoginScreenActivity extends Activity implements OnClickListener
                     Log.d("USER ROLE", GVRole);
 
 
-                    if (GVRole == "CLIENTHN")
-                    {
+//                    if (GVRole == "CLIENTHN")
+//                    {
                         Intent ii = new Intent(LoginScreenActivity.this, MainScreenActivity.class);
                         GlobalVars.GVUsername = GVUsername;
                         GlobalVars.GVRole = GVRole;
                         GlobalVars.GVUserID = GVUserID;
                         finish();
                         startActivity(ii);
-                    }
-                    else if (json.getString(TAG_ROLE) == "CLIENTUSA")
-                    {
-                        Intent intMainScreenClientUSA = new Intent(LoginScreenActivity.this, MainScreenClientUSAActivity.class);
-                        GlobalVars.GVUsername = GVUsername;
-                        GlobalVars.GVRole = GVRole;
-                        GlobalVars.GVUserID = GVUserID;
-                        finish();
-                        startActivity(intMainScreenClientUSA);
-                    }
-                    else if (json.getString(TAG_ROLE) == "ADMIN")
-                    {
-                        Intent intMainScreenAdmin = new Intent(LoginScreenActivity.this, MainScreenAdminActivity.class);
-                        GlobalVars.GVUsername = GVUsername;
-                        GlobalVars.GVRole = GVRole;
-                        GlobalVars.GVUserID = GVUserID;
-                        finish();
-                        startActivity(intMainScreenAdmin);
-                    }
-                    else if (json.getString(TAG_ROLE) == "MANAGER")
-                    {
-                        Intent intMainScreenManager = new Intent(LoginScreenActivity.this, MainScreenManagerActivity.class);
-                        GlobalVars.GVUsername = GVUsername;
-                        GlobalVars.GVRole = GVRole;
-                        GlobalVars.GVUserID = GVUserID;
-                        finish();
-                        startActivity(intMainScreenManager);
-                    }
+//                    }
+//                    else if (json.getString(TAG_ROLE) == "CLIENTUSA")
+//                    {
+//                        Intent intMainScreenClientUSA = new Intent(LoginScreenActivity.this, MainScreenClientUSAActivity.class);
+//                        GlobalVars.GVUsername = GVUsername;
+//                        GlobalVars.GVRole = GVRole;
+//                        GlobalVars.GVUserID = GVUserID;
+//                        finish();
+//                        startActivity(intMainScreenClientUSA);
+//                    }
+//                    else if (json.getString(TAG_ROLE) == "ADMIN")
+//                    {
+//                        Intent intMainScreenAdmin = new Intent(LoginScreenActivity.this, MainScreenAdminActivity.class);
+//                        GlobalVars.GVUsername = GVUsername;
+//                        GlobalVars.GVRole = GVRole;
+//                        GlobalVars.GVUserID = GVUserID;
+//                        finish();
+//                        startActivity(intMainScreenAdmin);
+//                    }
+//                    else if (json.getString(TAG_ROLE) == "MANAGER")
+//                    {
+//                        Intent intMainScreenManager = new Intent(LoginScreenActivity.this, MainScreenManagerActivity.class);
+//                        GlobalVars.GVUsername = GVUsername;
+//                        GlobalVars.GVRole = GVRole;
+//                        GlobalVars.GVUserID = GVUserID;
+//                        finish();
+//                        startActivity(intMainScreenManager);
+//                    }
 
                     return json.getString(TAG_MESSAGE);
                 }
