@@ -17,6 +17,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -176,64 +177,139 @@ public class LoginScreenActivity extends Activity implements OnClickListener
                 GVUsername = json.getString(TAG_USERNAME);
                 GVRole = json.getString(TAG_ROLE);
 
-                if (success == 1)
+                switch (success)
                 {
-                    Log.d("Successfully Login!", json.toString());
-                    Log.d("USER ROLE", GVRole);
-
-                    switch (GVRole)
+                    case 0:
                     {
-                        case "ADMIN":
+                        Log.d("Invalid Credentials", json.toString());
 
-                            Intent intMainScreenAdmin = new Intent(LoginScreenActivity.this, MainScreenAdminActivity.class);
-                            GlobalVars.GVUsername = GVUsername;
-                            GlobalVars.GVRole = GVRole;
-                            GlobalVars.GVUserID = GVUserID;
-                            finish();
-                            startActivity(intMainScreenAdmin);
+                        Toast.makeText(LoginScreenActivity.this, "TEST", Toast.LENGTH_SHORT).show();
 
-                            break;
-
-                        case "CLIENT":
-
-                            Intent intMainScreenClientHN = new Intent(LoginScreenActivity.this, MainScreenActivity.class);
-                            GlobalVars.GVUsername = GVUsername;
-                            GlobalVars.GVRole = GVRole;
-                            GlobalVars.GVUserID = GVUserID;
-                            finish();
-                            startActivity(intMainScreenClientHN);
-
-                            break;
-
-                        case "CLIENTUSA":
-
-                            Intent intMainScreenClientUSA = new Intent(LoginScreenActivity.this, MainScreenClientUSAActivity.class);
-                            GlobalVars.GVUsername = GVUsername;
-                            GlobalVars.GVRole = GVRole;
-                            GlobalVars.GVUserID = GVUserID;
-                            finish();
-                            startActivity(intMainScreenClientUSA);
-
-                            break;
-
-                        case "MANAGER":
-
-                            Intent intMainScreenManager = new Intent(LoginScreenActivity.this, MainScreenManagerActivity.class);
-                            GlobalVars.GVUsername = GVUsername;
-                            GlobalVars.GVRole = GVRole;
-                            GlobalVars.GVUserID = GVUserID;
-                            finish();
-                            startActivity(intMainScreenManager);
+                        return json.getString(TAG_MESSAGE);
                     }
 
-                    return json.getString(TAG_MESSAGE);
-                }
-                else if (json.getInt(TAG_SUCCESS) == 0)
-                {
-                    Toast.makeText(LoginScreenActivity.this, json.getString(TAG_MESSAGE), Toast.LENGTH_SHORT).show();
+                    case 1:
+                    {
+                        Log.d("Successful Login!", json.toString());
 
-                    return json.getString(TAG_MESSAGE);
+                        switch (GVRole)
+                        {
+                            case "ADMIN":
+
+                                Intent intMainScreenAdmin = new Intent(LoginScreenActivity.this, MainScreenAdminActivity.class);
+                                GlobalVars.GVUsername = GVUsername;
+                                GlobalVars.GVRole = GVRole;
+                                GlobalVars.GVUserID = GVUserID;
+                                finish();
+                                startActivity(intMainScreenAdmin);
+
+                                break;
+
+                            case "CLIENT":
+
+                                Intent intMainScreenClientHN = new Intent(LoginScreenActivity.this, MainScreenActivity.class);
+                                GlobalVars.GVUsername = GVUsername;
+                                GlobalVars.GVRole = GVRole;
+                                GlobalVars.GVUserID = GVUserID;
+                                finish();
+                                startActivity(intMainScreenClientHN);
+
+                                break;
+
+                            case "CLIENTUSA":
+
+                                Intent intMainScreenClientUSA = new Intent(LoginScreenActivity.this, MainScreenClientUSAActivity.class);
+                                GlobalVars.GVUsername = GVUsername;
+                                GlobalVars.GVRole = GVRole;
+                                GlobalVars.GVUserID = GVUserID;
+                                finish();
+                                startActivity(intMainScreenClientUSA);
+
+                                break;
+
+                            case "MANAGER":
+
+                                Intent intMainScreenManager = new Intent(LoginScreenActivity.this, MainScreenManagerActivity.class);
+                                GlobalVars.GVUsername = GVUsername;
+                                GlobalVars.GVRole = GVRole;
+                                GlobalVars.GVUserID = GVUserID;
+                                finish();
+                                startActivity(intMainScreenManager);
+
+                                break;
+
+                            default:
+
+                                break;
+                        }
+
+                        return json.getString(TAG_MESSAGE);
+                    }
+
+                    default:
+
+                        break;
+
                 }
+
+
+//                if (success == 1)
+//                {
+//                    Log.d("Successfully Login!", json.toString());
+//
+//                    switch (GVRole)
+//                    {
+//                        case "ADMIN":
+//
+//                            Intent intMainScreenAdmin = new Intent(LoginScreenActivity.this, MainScreenAdminActivity.class);
+//                            GlobalVars.GVUsername = GVUsername;
+//                            GlobalVars.GVRole = GVRole;
+//                            GlobalVars.GVUserID = GVUserID;
+//                            finish();
+//                            startActivity(intMainScreenAdmin);
+//
+//                            break;
+//
+//                        case "CLIENT":
+//
+//                            Intent intMainScreenClientHN = new Intent(LoginScreenActivity.this, MainScreenActivity.class);
+//                            GlobalVars.GVUsername = GVUsername;
+//                            GlobalVars.GVRole = GVRole;
+//                            GlobalVars.GVUserID = GVUserID;
+//                            finish();
+//                            startActivity(intMainScreenClientHN);
+//
+//                            break;
+//
+//                        case "CLIENTUSA":
+//
+//                            Intent intMainScreenClientUSA = new Intent(LoginScreenActivity.this, MainScreenClientUSAActivity.class);
+//                            GlobalVars.GVUsername = GVUsername;
+//                            GlobalVars.GVRole = GVRole;
+//                            GlobalVars.GVUserID = GVUserID;
+//                            finish();
+//                            startActivity(intMainScreenClientUSA);
+//
+//                            break;
+//
+//                        case "MANAGER":
+//
+//                            Intent intMainScreenManager = new Intent(LoginScreenActivity.this, MainScreenManagerActivity.class);
+//                            GlobalVars.GVUsername = GVUsername;
+//                            GlobalVars.GVRole = GVRole;
+//                            GlobalVars.GVUserID = GVUserID;
+//                            finish();
+//                            startActivity(intMainScreenManager);
+//                    }
+//
+//                    return json.getString(TAG_MESSAGE);
+//                }
+//                else if (json.getInt(TAG_SUCCESS) == 0)
+//                {
+//                    Toast.makeText(LoginScreenActivity.this, json.getString(TAG_MESSAGE), Toast.LENGTH_SHORT).show();
+//
+//                    return json.getString(TAG_MESSAGE);
+//                }
 
             }
             catch (JSONException e)
