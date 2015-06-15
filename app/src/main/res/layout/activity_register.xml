@@ -85,12 +85,15 @@
         android:layout_marginTop="25dp" />
 
     <Spinner
-        android:layout_width="120dp"
+        android:id="@+id/spinnerClientCountry"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:id="@+id/spinnerClientType"
         android:layout_below="@+id/txtSIPhoneNumber"
         android:layout_marginTop="25dp"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:entries="@array/country_arrays"
+        android:prompt="@string/country_prompt" />
 
     <Button
         android:layout_width="120dp"

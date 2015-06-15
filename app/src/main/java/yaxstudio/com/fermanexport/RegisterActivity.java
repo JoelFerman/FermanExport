@@ -8,9 +8,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,8 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class RegisterActivity extends Activity implements OnClickListener
-{
+public class RegisterActivity extends Activity implements OnClickListener, OnItemSelectedListener {
     private ProgressDialog pDialog;
 
     JSONParser JSONParser = new JSONParser();
@@ -37,6 +39,7 @@ public class RegisterActivity extends Activity implements OnClickListener
     TextView txtCenter;
     ImageView btnHeaderLeft, btnHeaderRight;
     Button btnSIClearFields, btnSIRegister;
+    Spinner spinnerClientCountry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -64,10 +67,13 @@ public class RegisterActivity extends Activity implements OnClickListener
 
         txtCenter.setText("Sign Up");
 
+        spinnerClientCountry = (Spinner) findViewById(R.id.spinnerClientCountry);
+
         btnHeaderLeft.setOnClickListener(this);
         btnHeaderRight.setOnClickListener(this);
         btnSIClearFields.setOnClickListener(this);
         btnSIRegister.setOnClickListener(this);
+        spinnerClientCountry.setOnItemSelectedListener(this);
     }
 
     @Override
@@ -152,8 +158,27 @@ public class RegisterActivity extends Activity implements OnClickListener
         txtSIPassword.requestFocus();
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+    {
+        if (parent.getItemAtPosition(position).toString().equals("Honduras"))
+        {
+            GlobalVars.GVAddRole = "CLIENTHN";
+        }
+        else if (parent.getItemAtPosition(position).toString().equals("United States"))
+        {
+            GlobalVars.GVAddRole = "CLIENTUSA";
+        }
+        //GlobalVars.GVAddRole = parent.getItemAtPosition(position).toString();
+        //Toast.makeText(parent.getContext(), GlobalVars.GVAddRole, Toast.LENGTH_LONG).show();
+        //Toast.makeText(parent.getContext(), "Selected Country is " + parent.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show();
+    }
 
+    @Override
+    public void onNothingSelected(AdapterView<?> parent)
+    {
 
+    }
 
     class CreateUser extends AsyncTask<String, String, String>
     {
@@ -188,7 +213,7 @@ public class RegisterActivity extends Activity implements OnClickListener
             String Password = txtSIPassword.getText().toString();
             String Email = txtSIEmail.getText().toString();
             String Phone = txtSIPhoneNumber.getText().toString();
-            String Role = "CLIENT";
+            String Role = GlobalVars.GVAddRole;
 
             try
             {

@@ -2,5 +2,9 @@ package yaxstudio.com.fermanexport;
 
 public class GlobalVars
 {
-    public static String GVUsername, GVUserID, GVRole;
+    //User Credentials
+    public static String GVUserID, GVUsername, GVRole;
+
+    //Register User
+    public static String GVAddRole;
 }

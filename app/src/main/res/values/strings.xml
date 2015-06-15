@@ -12,6 +12,13 @@
     <string name="title_activity_main_screen">MainScreenActivity</string>
     <string name="title_activity_register">RegisterActivity</string>
 
+    <string name="country_prompt">Choose a country</string>
+
+    <string-array name="country_arrays">
+        <item>Honduras</item>
+        <item>United States</item>
+    </string-array>
+
 <!-- ****************************************************************************************************** -->
 <!-- ****************************************** APP COLORS START ****************************************** -->
 <!-- ****************************************************************************************************** -->
