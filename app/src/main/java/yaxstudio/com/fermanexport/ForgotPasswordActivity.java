@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Random;
+
 public class ForgotPasswordActivity extends Activity implements OnClickListener
 {
     ImageView btnHeaderLeft, btnHeaderRight;
@@ -65,7 +67,7 @@ public class ForgotPasswordActivity extends Activity implements OnClickListener
     public void RecoverPassword()
     {
         SmsManager smsManager = SmsManager.getDefault();
-        smsManager.sendTextMessage(txtFPRecoverPasswordEmail.getText().toString(), null, "SMS Message Test! (Sent from my android app)", null, null);
+        smsManager.sendTextMessage(txtFPRecoverPasswordEmail.getText().toString(), null, "SMS Message Test! (Sent from FermanExport app)", null, null);
 
         Toast.makeText(ForgotPasswordActivity.this, "SMS SENT!", Toast.LENGTH_SHORT).show();
     }

@@ -31,14 +31,14 @@ public class PackageDetailsActivity extends Activity implements OnClickListener
     private static final String PACKAGE_INFO_URL = "http://yaxstudio.host56.com/FEGetPackageInfoWS.php";
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
-    private static final String TAG_PACKAGEID = "ID_PKG";
-    private static final String TAG_SERVICECARRIER = "SERVICECARRIER_PKG";
-    private static final String TAG_TRACKINGNUMBER = "TRACKINGNUMBER_PKG";
-    private static final String TAG_PORTARRIVEDATE = "PORTARRIVEDATE_PKG";
-    private static final String TAG_DELIVERYDATE = "DELIVERYDATE_PKG";
-    private static final String TAG_SHIPPINGPRICE = "SHIPPINGPRICE_PKG";
-    private static final String TAG_PAYMENTSTATUS = "PAYMENTSTATUS_PKG";
-    private static final String TAG_DETAILS = "DETAIL_PKG";
+    private static final String TAG_PACKAGEID = "ID_pkghn";
+    private static final String TAG_TITLE = "Title_pkghn";
+    private static final String TAG_SERVICECARRIER = "ServiceCarrier_pkghn";
+    private static final String TAG_TRACKINGNUMBER = "TrackingNumber_pkghn";
+    private static final String TAG_DETAILS = "Details_pkghn";
+    private static final String TAG_STATUS = "Status_pkghn";
+    private static final String TAG_SHIPPINGPRICE = "ShippingPrice_pkghn";
+    private static final String TAG_PAYMENTSTATUS = "PaymentStatus_pkghn";
 
     ImageView btnHeaderRight, btnHeaderLeft;
     TextView txtCenterTitle, txtPDPackageID, txtPDServiceCarrier, txtPDTrackingNumber, txtPDPortArriveDate, txtPDDeliveryDate;
@@ -152,8 +152,8 @@ public class PackageDetailsActivity extends Activity implements OnClickListener
                     txtPDPackageID.setText(json.getString(TAG_PACKAGEID));
                     txtPDServiceCarrier.setText(json.getString(TAG_SERVICECARRIER));
                     txtPDTrackingNumber.setText(json.getString(TAG_TRACKINGNUMBER));
-                    txtPDPortArriveDate.setText(json.getString(TAG_PORTARRIVEDATE));
-                    txtPDDeliveryDate.setText(json.getString(TAG_DELIVERYDATE));
+                    txtPDPortArriveDate.setText(json.getString(TAG_DETAILS));
+                    txtPDDeliveryDate.setText(json.getString(TAG_STATUS));
                     txtPDShippingPrice.setText(json.getString(TAG_SHIPPINGPRICE));
                     txtPDPaymentStatus.setText(json.getString(TAG_PAYMENTSTATUS));
                     txtPDDetails.setText(json.getString(TAG_DETAILS));

@@ -191,11 +191,17 @@ public class MainScreenActivity extends Activity implements OnClickListener
                     ListAdapter adapter = new SimpleAdapter(MainScreenActivity.this, oslist, R.layout.list_v, new String[] { TAG_VER,TAG_NAME, TAG_API }, new int[] {R.id.txtPackageTitle,R.id.txtPackageServiceCarrier, R.id.txtPackageTrackingNumber});
 
                     lstMSUserPackage.setAdapter(adapter);
+
                     lstMSUserPackage.setOnItemClickListener(new AdapterView.OnItemClickListener()
                     {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id)
                         {
+
+                            Intent intLSTItemDetails = new Intent(MainScreenActivity.this, PackageDetailsActivity.class);
+                            finish();
+                            startActivity(intLSTItemDetails);
+
                             Toast.makeText(MainScreenActivity.this, "You clicked at " + oslist.get(+position).get("Title_pkghn"), Toast.LENGTH_SHORT).show();
                         }
                     });
