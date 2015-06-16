@@ -41,10 +41,10 @@ public class MainScreenActivity extends Activity implements OnClickListener
     private static String GET_USER_PACKAGES_URL = "http://yaxstudio.host56.com/FEShowPackagesHNWS.php"; //"http://api.learn2crack.com/android/jsonos/";
 
     //JSON Node Names
-    private static final String TAG_OS = "UserPackages";
-    private static final String TAG_VER = "Title_pkghn";
-    private static final String TAG_NAME = "ServiceCarrier_pkghn";
-    private static final String TAG_API = "TrackingNumber_pkghn";
+    private static final String TAG_ARRAYTITLE = "UserPackages";
+    private static final String TAG_TITLEPKG = "Title_pkghn";
+    private static final String TAG_SERVICECARRIER = "ServiceCarrier_pkghn";
+    private static final String TAG_TRACKINGNUMBER = "TrackingNumber_pkghn";
 
     JSONArray arrayUserPackages = null;
 
@@ -166,29 +166,29 @@ public class MainScreenActivity extends Activity implements OnClickListener
             try
             {
                 // Getting JSON Array from URL
-                arrayUserPackages = json.getJSONArray(TAG_OS);
+                arrayUserPackages = json.getJSONArray(TAG_ARRAYTITLE);
 
                 for(int i = 0; i < arrayUserPackages.length(); i++)
                 {
                     JSONObject c = arrayUserPackages.getJSONObject(i);
 
                     // Storing  JSON item in a Variable
-                    String ver = c.getString(TAG_VER);
-                    String name = c.getString(TAG_NAME);
-                    String api = c.getString(TAG_API);
+                    String title = c.getString(TAG_TITLEPKG);
+                    String serviceCarrier = c.getString(TAG_SERVICECARRIER);
+                    String trackingNumber = c.getString(TAG_TRACKINGNUMBER);
 
                     // Adding value HashMap key => value
 
                     HashMap<String, String> map = new HashMap<String, String>();
 
-                    map.put(TAG_VER, ver);
-                    map.put(TAG_NAME, name);
-                    map.put(TAG_API, api);
+                    map.put(TAG_TITLEPKG, title);
+                    map.put(TAG_SERVICECARRIER, serviceCarrier);
+                    map.put(TAG_TRACKINGNUMBER, trackingNumber);
 
                     oslist.add(map);
                     lstMSUserPackage=(ListView)findViewById(R.id.lstMSUserPackage);
 
-                    ListAdapter adapter = new SimpleAdapter(MainScreenActivity.this, oslist, R.layout.list_v, new String[] { TAG_VER,TAG_NAME, TAG_API }, new int[] {R.id.txtPackageTitle,R.id.txtPackageServiceCarrier, R.id.txtPackageTrackingNumber});
+                    ListAdapter adapter = new SimpleAdapter(MainScreenActivity.this, oslist, R.layout.list_v, new String[] { TAG_TITLEPKG,TAG_SERVICECARRIER, TAG_TRACKINGNUMBER }, new int[] {R.id.txtPackageTitle,R.id.txtPackageServiceCarrier, R.id.txtPackageTrackingNumber});
 
                     lstMSUserPackage.setAdapter(adapter);
 

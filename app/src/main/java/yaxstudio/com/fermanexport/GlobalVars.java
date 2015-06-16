@@ -10,5 +10,6 @@ public class GlobalVars
     //Register User
     public static String GVAddRole;
 
-    public static String GVRandomAlphaNumeric;
+    // Global Variables
+    public static String GVTokenHN;
 }

@@ -116,28 +116,38 @@ public class AddPackageUSAActivity extends Activity implements OnClickListener
             // TODO Auto-generated method stub
             // Check for success tag
 
-            int success, min = 10, max = 9999999, i1;
+            GlobalMethods GVM = new GlobalMethods();
+            GVM.RandomizeAlphaNumeric();
+            String idTokenHN = GlobalVars.GVTokenHN;
+
+            int success, min = 10000, max = 99999, i1;
 
             Random r = new Random();
 
             i1 = r.nextInt(max - min + 1) + min;
 
-            String ID_PKG = "PKGUSA-00" + i1;
-            String PersonTo = txtAPUSAPersonTo.getText().toString();
-            String PersonFrom = txtAPUSAPersonFrom.getText().toString();
-            String Detail = txtAPUSADetail.getText().toString();
+            String PackageIDUSA = "PKGUSA-" + i1;
+            String Receiver = txtAPUSAPersonTo.getText().toString();
+            String Sender = txtAPUSAPersonFrom.getText().toString();
+            String Details = txtAPUSADetail.getText().toString();
             String Price = txtAPUSAPrice.getText().toString();
+            String PaymentStatusUSA = "0";
+            String StatusPKGUSA = "0";
+            String TokenUSA = idTokenHN;
 
             try
             {
                 // Building Parameters
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
 
-                params.add(new BasicNameValuePair("ID_PKG", ID_PKG));
-                params.add(new BasicNameValuePair("PersonTo", PersonTo));
-                params.add(new BasicNameValuePair("PersonFrom", PersonFrom));
-                params.add(new BasicNameValuePair("Detail", Detail));
+                params.add(new BasicNameValuePair("PackageIDUSA", PackageIDUSA));
+                params.add(new BasicNameValuePair("Receiver", Receiver));
+                params.add(new BasicNameValuePair("Sender", Sender));
+                params.add(new BasicNameValuePair("Details", Details));
                 params.add(new BasicNameValuePair("Price", Price));
+                params.add(new BasicNameValuePair("PaymentStatusUSA", PaymentStatusUSA));
+                params.add(new BasicNameValuePair("StatusPKGUSA", StatusPKGUSA));
+                params.add(new BasicNameValuePair("TokenUSA", TokenUSA));
 
                 Log.d("request!", "starting");
 

@@ -9,6 +9,17 @@
     <include layout="@layout/header" android:id="@+id/header"/>
 
     <EditText
+        android:id="@+id/txtAPTitle"
+        android:hint="Package Title"
+        android:textStyle="italic"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/txtAPServiceCarrier"
+        android:layout_marginBottom="30dp"
+        android:textSize="14dp"/>
+
+    <EditText
         android:id="@+id/txtAPServiceCarrier"
         android:hint="Service Carrier"
         android:textStyle="italic"
@@ -16,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/txtAPTrackingNumber"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="30dp"
         android:textSize="14dp"/>
 
     <EditText
@@ -35,11 +46,11 @@
         android:hint="Package Content"
         android:textStyle="italic"
         android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/txtAPTrackingNumber"
-        android:layout_marginTop="80dp"
-        android:maxLines="7"
+        android:layout_marginTop="30dp"
+        android:maxLines="4"
         android:textSize="14dp"/>
 
     <TextView

@@ -37,7 +37,7 @@ public class AddPackageActivity extends Activity implements OnClickListener
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
 
-    EditText txtAPServiceCarrier, txtAPTrackingNumber, txtAPDetail;
+    EditText txtAPTitle, txtAPServiceCarrier, txtAPTrackingNumber, txtAPDetail;
     ImageView btnHeaderLeft, btnHeaderRight;
     TextView txtCenterTitle;
 
@@ -52,6 +52,7 @@ public class AddPackageActivity extends Activity implements OnClickListener
 
         txtCenterTitle = (TextView)findViewById(R.id.txtCenterTitle);
 
+        txtAPTitle = (EditText)findViewById(R.id.txtAPTitle);
         txtAPServiceCarrier = (EditText)findViewById(R.id.txtAPServiceCarrier);
         txtAPTrackingNumber = (EditText)findViewById(R.id.txtAPTrackingNumber);
         txtAPDetail = (EditText)findViewById(R.id.txtAPDetail);
@@ -87,7 +88,7 @@ public class AddPackageActivity extends Activity implements OnClickListener
 
             case R.id.btnHeaderRight:
 
-                Toast.makeText(AddPackageActivity.this, "AddPackage() Function Invoked", Toast.LENGTH_SHORT).show();
+                new AddPackageHN().execute();
 
                 break;
 
@@ -98,7 +99,7 @@ public class AddPackageActivity extends Activity implements OnClickListener
 
     }
 
-    class AddPackage extends AsyncTask<String, String, String>
+    class AddPackageHN extends AsyncTask<String, String, String>
     {
         boolean failure = false;
 
@@ -119,20 +120,25 @@ public class AddPackageActivity extends Activity implements OnClickListener
             // TODO Auto-generated method stub
             // Check for success tag
 
-            int success, min = 0, max = 99999, i1;
+            GlobalMethods GVM = new GlobalMethods();
+            GVM.RandomizeAlphaNumeric();
+            String idTokenHN = GlobalVars.GVTokenHN;
+
+            int success, min = 10000, max = 99999, i1;
 
             Random r = new Random();
 
             i1 = r.nextInt(max - min + 1) + min;
 
-            String PackageID = "PACKAGE-" + i1;
+            String PackageIDHN = "PKGHN-" + i1;
+            String Title = txtAPTitle.getText().toString();
             String ServiceCarrier = txtAPServiceCarrier.getText().toString();
             String TrackingNumber = txtAPTrackingNumber.getText().toString();
-            String Detail = txtAPDetail.getText().toString();
-            String PortArriveDate = "";
-            String DeliveryDate = "";
-            String ShippingPrice = "";
-            String PaymentStatus = "NO";
+            String Details = txtAPDetail.getText().toString();
+            String StatusPKG = "0";
+            String ShippingPrice = "0";
+            String PaymentStatus = "0";
+            String TokenHN = idTokenHN.toString();
             String UserID = GlobalVars.GVUserID;
 
             try
@@ -140,37 +146,39 @@ public class AddPackageActivity extends Activity implements OnClickListener
                 // Building Parameters
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
 
-                params.add(new BasicNameValuePair("PackageID", PackageID));
+                params.add(new BasicNameValuePair("PackageIDHN", PackageIDHN));
+                params.add(new BasicNameValuePair("Title", Title));
                 params.add(new BasicNameValuePair("ServiceCarrier", ServiceCarrier));
                 params.add(new BasicNameValuePair("TrackingNumber", TrackingNumber));
-                params.add(new BasicNameValuePair("Detail", Detail));
-                params.add(new BasicNameValuePair("PortArriveDate", PortArriveDate));
-                params.add(new BasicNameValuePair("DeliveryDate", DeliveryDate));
+                params.add(new BasicNameValuePair("Details", Details));
+                params.add(new BasicNameValuePair("StatusPKG", StatusPKG));
                 params.add(new BasicNameValuePair("ShippingPrice", ShippingPrice));
                 params.add(new BasicNameValuePair("PaymentStatus", PaymentStatus));
+                params.add(new BasicNameValuePair("TokenHN", TokenHN));
                 params.add(new BasicNameValuePair("UserID", UserID));
 
                 Log.d("request!", "starting");
+                Log.d("INSERT String -> ", "ID: " + PackageIDHN + "Title: " + Title + "Carrier: " + ServiceCarrier + "Tracking: " + TrackingNumber + "Details: " + Details + "Status: " + StatusPKG + "Shipping: " + ShippingPrice + "Payment: " + PaymentStatus + "TokenHN: " + TokenHN + "ID_User: " + UserID );
 
                 //Posting user data to script
                 JSONObject json = JSONParser.makeHttpRequest(ADD_PACKAGE_URL, "POST", params);
 
                 // full json response
-                Log.d("Register attempt", json.toString());
+                Log.d("Add Package attempt", json.toString());
 
                 // json success element
                 success = json.getInt(TAG_SUCCESS);
 
                 if (success == 1)
                 {
-                    Log.d("User Created!", json.toString());
+                    Log.d("Package Added!", json.toString());
 
                     return json.getString(TAG_MESSAGE);
                 }
                 else
                 {
 
-                    Log.d("Register Failure!", json.getString(TAG_MESSAGE));
+                    Log.d("Add Package Failure!", json.getString(TAG_MESSAGE));
 
                     return json.getString(TAG_MESSAGE);
 

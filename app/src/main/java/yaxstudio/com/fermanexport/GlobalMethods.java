@@ -20,6 +20,6 @@ public class GlobalMethods
 
         String id = sb.toString();
 
-        GlobalVars.GVRandomAlphaNumeric = id;
+        GlobalVars.GVTokenHN = id;
     }
 }
