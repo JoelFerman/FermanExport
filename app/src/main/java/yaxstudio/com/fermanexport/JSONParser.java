@@ -1,8 +1,5 @@
 package yaxstudio.com.fermanexport;
 
-/**
- * Created by joelferman on 6/1/15.
- */
 import org.apache.http.HttpEntity;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,7 +25,7 @@ public class JSONParser
     static JSONObject jsonObj ;
     static String json = "";
 
-    // default no argument constructor for jsonpaser class
+    // Constructor
     public JSONParser()
     {
     }
@@ -43,11 +40,9 @@ public class JSONParser
 
             // Executing POST request & storing the response from server  locally.
             HttpResponse httpResponse = httpClient.execute(httpPost);
-
             HttpEntity httpEntity = httpResponse.getEntity();
 
             is = httpEntity.getContent();
-
         }
         catch (UnsupportedEncodingException e)
         {
@@ -87,7 +82,7 @@ public class JSONParser
         }
         catch (Exception e)
         {
-            Log.e("Error", " something wrong with converting result " + e.toString());
+            Log.e("Buffer Error", "Error converting result " + e.toString());
         }
 
         // Try block used for pasrseing String to a json object
@@ -97,7 +92,7 @@ public class JSONParser
         }
         catch (JSONException e)
         {
-            Log.e("json Parsering", "" + e.toString());
+            Log.e("json Parsing", "Error parsing data" + e.toString());
         }
 
         // Returning json Object.

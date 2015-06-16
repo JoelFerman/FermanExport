@@ -205,7 +205,7 @@ public class LoginScreenActivity extends Activity implements OnClickListener
 
                                 break;
 
-                            case "CLIENT":
+                            case "CLIENTHN":
 
                                 Intent intMainScreenClientHN = new Intent(LoginScreenActivity.this, MainScreenActivity.class);
                                 GlobalVars.GVUsername = GVUsername;
@@ -242,6 +242,8 @@ public class LoginScreenActivity extends Activity implements OnClickListener
 
                                 break;
                         }
+
+                        //Toast.makeText(LoginScreenActivity.this, GlobalVars.GVAddRole, Toast.LENGTH_LONG).show();
 
                         return json.getString(TAG_MESSAGE);
                     }
