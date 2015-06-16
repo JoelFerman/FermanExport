@@ -29,7 +29,7 @@ public class AddPackageUSAActivity extends Activity implements OnClickListener
 
     JSONParser JSONParser = new JSONParser();
 
-    private static String INSERT_PKGUSA_URL = "http://yaxstudio.host56.com/FEInsertPKGUSAWS.php";
+    private static String INSERT_PKGUSA_URL = "http://yaxstudio.host56.com/FEAddPackageUSAWS.php";
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
 
