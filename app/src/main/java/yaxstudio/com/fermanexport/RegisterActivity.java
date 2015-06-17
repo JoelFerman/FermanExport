@@ -26,7 +26,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class RegisterActivity extends Activity implements OnClickListener, OnItemSelectedListener {
+public class RegisterActivity extends Activity implements OnClickListener, OnItemSelectedListener
+{
     private ProgressDialog pDialog;
 
     JSONParser JSONParser = new JSONParser();
@@ -104,7 +105,6 @@ public class RegisterActivity extends Activity implements OnClickListener, OnIte
                 else
                 {
                     Toast.makeText(RegisterActivity.this, "Password Fields Don't Match!", Toast.LENGTH_SHORT).show();
-
                     ClearSensitiveFields();
                 }
 
@@ -125,7 +125,6 @@ public class RegisterActivity extends Activity implements OnClickListener, OnIte
                 else
                 {
                     Toast.makeText(RegisterActivity.this, "Password Fields Don't Match!", Toast.LENGTH_SHORT).show();
-
                     ClearSensitiveFields();
                 }
 
@@ -161,14 +160,33 @@ public class RegisterActivity extends Activity implements OnClickListener, OnIte
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
     {
-        if (parent.getItemAtPosition(position).toString().equals("Honduras"))
+        switch (parent.getItemAtPosition(position).toString())
         {
-            GlobalVars.GVAddRole = "CLIENTHN";
+            case "Honduras":
+
+                GlobalVars.GVAddRole = "CLIENTHN";
+
+                break;
+
+            case "United States":
+
+                GlobalVars.GVAddRole = "CLIENTUSA";
+
+                break;
+
+            default:
+
+                break;
         }
-        else if (parent.getItemAtPosition(position).toString().equals("United States"))
-        {
-            GlobalVars.GVAddRole = "CLIENTUSA";
-        }
+
+//        if (parent.getItemAtPosition(position).toString().equals("Honduras"))
+//        {
+//            GlobalVars.GVAddRole = "CLIENTHN";
+//        }
+//        else if (parent.getItemAtPosition(position).toString().equals("United States"))
+//        {
+//            GlobalVars.GVAddRole = "CLIENTUSA";
+//        }
         //GlobalVars.GVAddRole = parent.getItemAtPosition(position).toString();
         //Toast.makeText(parent.getContext(), GlobalVars.GVAddRole, Toast.LENGTH_LONG).show();
         //Toast.makeText(parent.getContext(), "Selected Country is " + parent.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show();
@@ -201,13 +219,13 @@ public class RegisterActivity extends Activity implements OnClickListener, OnIte
             // TODO Auto-generated method stub
             // Check for success tag
 
-            int success, min = 10, max = 999, i1;
+            int success, min = 1000, max = 9999, i1;
 
             Random r = new Random();
 
             i1 = r.nextInt(max - min + 1) + min;
 
-            String UserID = "CLIENT-00" + i1;
+            String UserID = "CLIENTHN-" + i1;
             String FullName = txtSIFullName.getText().toString();
             String Username = txtSIUsername.getText().toString();
             String Password = txtSIPassword.getText().toString();

@@ -90,11 +90,68 @@ public class UserProfileActivity extends Activity implements OnClickListener
         {
             case R.id.btnHeaderLeft:
 
-                Intent intBackMainScreen = new Intent(UserProfileActivity.this, MainScreenActivity.class);
-                EditableText();
-                ClearUserInfo();
-                finish();
-                startActivity(intBackMainScreen);
+                switch (GlobalVars.GVRole)
+                {
+                    case "ADMIN":
+
+                        Intent intBackMainScreenAdmin = new Intent(UserProfileActivity.this, MainScreenAdminActivity.class);
+                        EditableText();
+                        ClearUserInfo();
+                        finish();
+                        startActivity(intBackMainScreenAdmin);
+
+                        break;
+
+                    case "CLIENTHN":
+
+                        Intent intBackMainScreen = new Intent(UserProfileActivity.this, MainScreenActivity.class);
+                        EditableText();
+                        ClearUserInfo();
+                        finish();
+                        startActivity(intBackMainScreen);
+
+                        break;
+
+                    case "CLIENTUSA":
+
+                        Intent intBackMainScreenUSA = new Intent(UserProfileActivity.this, MainScreenClientUSAActivity.class);
+                        EditableText();
+                        ClearUserInfo();
+                        finish();
+                        startActivity(intBackMainScreenUSA);
+
+                        break;
+
+                    case "MANAGER":
+
+                        Intent intBackMainScreenManager = new Intent(UserProfileActivity.this, MainScreenManagerActivity.class);
+                        EditableText();
+                        ClearUserInfo();
+                        finish();
+                        startActivity(intBackMainScreenManager);
+
+                        break;
+
+                    case "DELIVERYTEAM":
+
+                        Intent intBackMainScreenDeliveryTeam = new Intent(UserProfileActivity.this, MainScreenDeliveryTeamActivity.class);
+                        EditableText();
+                        ClearUserInfo();
+                        finish();
+                        startActivity(intBackMainScreenDeliveryTeam);
+
+                        break;
+
+                    default:
+
+                        break;
+                }
+
+//                Intent intBackMainScreen = new Intent(UserProfileActivity.this, MainScreenActivity.class);
+//                EditableText();
+//                ClearUserInfo();
+//                finish();
+//                startActivity(intBackMainScreen);
 
                 break;
 
