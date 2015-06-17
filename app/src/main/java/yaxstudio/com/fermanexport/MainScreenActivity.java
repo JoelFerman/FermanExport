@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -31,16 +32,26 @@ import java.util.List;
 public class MainScreenActivity extends Activity implements OnClickListener
 {
     ImageView btnHeaderRight, btnHeaderLeft;
-    TextView txtCenterTitle, txtLSTTrackingNumber, txtLSTServiceCarrier, txtLSTTitle;
+    TextView txtCenterTitle, txtLSTTrackingNumber, txtLSTServiceCarrier, txtLSTTitle, txtOngoingPackagesHN;
     ImageButton btnAddPackage;
     ListView lstMSUserPackage;
 
     ArrayList<HashMap<String, String>> oslist = new ArrayList<HashMap<String, String>>();
 
+    // Progress Dialog
+    private ProgressDialog pDialog;
+
+    // JSON parser class
+    JSONParser jsonParser = new JSONParser();
+
     //URL to get JSON Array
     private static String GET_USER_PACKAGES_URL = "http://yaxstudio.host56.com/FEShowPackagesHNWS.php"; //"http://api.learn2crack.com/android/jsonos/";
+    private static String GET_USER_ONGOING_PACKAGES_URL = "http://yaxstudio.host56.com/FEShowUserOngoingPackagesHNWS.php";
+    private static String GET_USER_READYTODELIVER_PACKAGES_URL = "http://yaxstudio.host56.com/FEShowPackagesHNWS.php";
 
     //JSON Node Names
+    private static final String TAG_SUCCESS = "success";
+    private static final String TAG_MESSAGE = "message";
     private static final String TAG_ARRAYTITLE = "UserPackages";
     private static final String TAG_TITLEPKG = "Title_pkghn";
     private static final String TAG_SERVICECARRIER = "ServiceCarrier_pkghn";
@@ -58,6 +69,8 @@ public class MainScreenActivity extends Activity implements OnClickListener
         btnHeaderLeft = (ImageView)findViewById(R.id.btnHeaderLeft);
 
         txtCenterTitle = (TextView)findViewById(R.id.txtCenterTitle);
+
+        txtOngoingPackagesHN = (TextView)findViewById(R.id.txtOngoingPackagesHN);
 
         btnAddPackage = (ImageButton)findViewById(R.id.btnAddPackage);
 
@@ -211,6 +224,99 @@ public class MainScreenActivity extends Activity implements OnClickListener
             {
                 e.printStackTrace();
             }
+        }
+    }
+
+    class getUserPackagesCount extends AsyncTask<String, String, String>
+    {
+        /**
+         * Before starting background thread Show Progress Dialog
+         * */
+        boolean failure = false;
+
+        @Override
+        protected void onPreExecute ()
+        {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(MainScreenActivity.this);
+            pDialog.setMessage("Getting Packages Count...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... args)
+        {
+            // TODO Auto-generated method stub
+            // here Check for success tag
+            int success;
+
+            String UserID = GlobalVars.GVRole;
+
+            try
+            {
+                List<NameValuePair> params = new ArrayList<NameValuePair>();
+                params.add(new BasicNameValuePair("UserID", UserID));
+
+                Log.d("request!", "starting");
+
+                JSONObject json = jsonParser.makeHttpRequest(GET_USER_ONGOING_PACKAGES_URL, "POST", params);
+
+                // checking  log for json response
+                Log.d("Login attempt", json.toString());
+
+                // success tag for json
+                success = json.getInt(TAG_SUCCESS);
+
+                switch (success)
+                {
+                    case 0:
+                    {
+                        Log.d("Invalid Credentials", json.toString());
+
+                        Toast.makeText(MainScreenActivity.this, "TEST", Toast.LENGTH_SHORT).show();
+
+                        return json.getString(TAG_MESSAGE);
+                    }
+
+                    case 1:
+                    {
+                        Log.d("Successful Login!", json.toString());
+
+                        txtOngoingPackagesHN.setText(TAG_SUCCESS);
+
+                        return json.getString(TAG_MESSAGE);
+                    }
+
+                    default:
+
+                        break;
+
+                }
+            }
+            catch (JSONException e)
+            {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        /**
+         * Once the background process is done we need to  Dismiss the progress dialog asap
+         * **/
+
+        protected void onPostExecute(String message)
+        {
+
+            pDialog.dismiss();
+
+            if (message != null)
+            {
+                Toast.makeText(MainScreenActivity.this, message, Toast.LENGTH_LONG).show();
+            }
+
         }
     }
 }

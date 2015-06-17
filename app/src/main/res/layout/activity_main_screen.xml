@@ -17,13 +17,13 @@
         android:layout_marginTop="37dp"
         android:id="@+id/dashboardRelativeLayout">
 
-        <SearchView
-            android:layout_width="300dp"
-            android:layout_height="35dp"
-            android:id="@+id/txtPackageSearchBox"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/button_search_shape"
-            android:layout_marginTop="15dp"/>
+        <!--<SearchView-->
+            <!--android:layout_width="300dp"-->
+            <!--android:layout_height="35dp"-->
+            <!--android:id="@+id/txtPackageSearchBox"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:background="@drawable/button_search_shape"-->
+            <!--android:layout_marginTop="15dp"/>-->
 
         <TextView
             android:layout_width="wrap_content"

@@ -129,7 +129,6 @@ public class LoginScreenActivity extends Activity implements OnClickListener
     }
 
     class AttemptLogin extends AsyncTask<String, String, String>
-
     {
         /**
          * Before starting background thread Show Progress Dialog
@@ -264,16 +263,16 @@ public class LoginScreenActivity extends Activity implements OnClickListener
          * Once the background process is done we need to  Dismiss the progress dialog asap
          * **/
 
-    protected void onPostExecute(String message)
-    {
-
-        pDialog.dismiss();
-
-        if (message != null)
+        protected void onPostExecute(String message)
         {
-            Toast.makeText(LoginScreenActivity.this, message, Toast.LENGTH_LONG).show();
-        }
 
+            pDialog.dismiss();
+
+            if (message != null)
+            {
+                Toast.makeText(LoginScreenActivity.this, message, Toast.LENGTH_LONG).show();
+            }
+
+        }
     }
-}
 }
