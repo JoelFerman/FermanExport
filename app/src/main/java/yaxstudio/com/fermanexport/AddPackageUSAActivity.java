@@ -92,7 +92,7 @@ public class AddPackageUSAActivity extends Activity implements OnClickListener
         txtAPUSADetail.setText("");
         txtAPUSAPrice.setText("");
 
-        txtAPUSAPersonTo.requestFocus();
+        txtAPUSAPersonTo.hasFocus();
     }
 
     class AddPackageUSA extends AsyncTask<String, String, String>
@@ -134,12 +134,12 @@ public class AddPackageUSAActivity extends Activity implements OnClickListener
             String PaymentStatusUSA = "0";
             String StatusPKGUSA = "0";
             String TokenUSA = idTokenHN;
+            String IDUser = GlobalVars.GVUserID;
 
             try
             {
                 // Building Parameters
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
-
                 params.add(new BasicNameValuePair("PackageIDUSA", PackageIDUSA));
                 params.add(new BasicNameValuePair("Receiver", Receiver));
                 params.add(new BasicNameValuePair("Sender", Sender));
@@ -148,6 +148,7 @@ public class AddPackageUSAActivity extends Activity implements OnClickListener
                 params.add(new BasicNameValuePair("PaymentStatusUSA", PaymentStatusUSA));
                 params.add(new BasicNameValuePair("StatusPKGUSA", StatusPKGUSA));
                 params.add(new BasicNameValuePair("TokenUSA", TokenUSA));
+                params.add(new BasicNameValuePair("IDUser", IDUser));
 
                 Log.d("request!", "starting");
 
@@ -155,24 +156,22 @@ public class AddPackageUSAActivity extends Activity implements OnClickListener
                 JSONObject json = JSONParser.makeHttpRequest(INSERT_PKGUSA_URL, "POST", params);
 
                 // full json response
-                Log.d("Register attempt", json.toString());
+                Log.d("Add Package USA attempt", json.toString());
 
                 // json success element
                 success = json.getInt(TAG_SUCCESS);
 
                 if (success == 1)
                 {
-                    Log.d("User Created!", json.toString());
+                    Log.d("Package Added!", json.toString());
 
                     return json.getString(TAG_MESSAGE);
                 }
                 else
                 {
-
-                    Log.d("Register Failure!", json.getString(TAG_MESSAGE));
+                    Log.d("Add Package Failure!", json.getString(TAG_MESSAGE));
 
                     return json.getString(TAG_MESSAGE);
-
                 }
             }
             catch (JSONException e)

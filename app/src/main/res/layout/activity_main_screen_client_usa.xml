@@ -61,7 +61,7 @@
     </RelativeLayout>
 
     <ImageButton
-        android:id="@+id/btnAddPackage"
+        android:id="@+id/btnAddPackageUSA"
         android:layout_width="@dimen/round_button_diameter"
         android:layout_height="@dimen/round_button_diameter"
         android:layout_alignParentRight="true"
@@ -75,9 +75,9 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="265dp"
-        android:id="@+id/lstMSPackage"
+        android:id="@+id/lstMSUSAPackage"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/btnAddPackage"
+        android:layout_below="@+id/btnAddPackageUSA"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
