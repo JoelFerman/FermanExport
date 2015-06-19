@@ -27,8 +27,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-//import yaxstudio.com.fermanexport.JSONParser;
-
 public class MainScreenActivity extends Activity implements OnClickListener
 {
     ImageView btnHeaderRight, btnHeaderLeft;
@@ -45,13 +43,14 @@ public class MainScreenActivity extends Activity implements OnClickListener
     JSONParser jsonParser = new JSONParser();
 
     //URL to get JSON Array
-    private static String GET_USER_PACKAGES_URL = "http://yaxstudio.host56.com/FEShowPackagesHNWS.php"; //"http://api.learn2crack.com/android/jsonos/";
-    private static String GET_USER_ONGOING_PACKAGES_URL = "http://yaxstudio.host56.com/FEShowUserOngoingPackagesHNWS.php";
+    private static String GET_USER_PACKAGES_URL = "http://yaxstudio.host56.com/FEShowPackagesHNWS.php";
+    private static String GET_USER_ONGOING_PACKAGES_URL = "http://yaxstudio.host56.com/FECountPackagesHNWS.php";
     private static String GET_USER_READYTODELIVER_PACKAGES_URL = "http://yaxstudio.host56.com/FEShowPackagesHNWS.php";
 
     //JSON Node Names
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
+    private static final String TAG_ONGOINGCOUNTHN = "ongoingpkgcounthn";
     private static final String TAG_ARRAYTITLE = "UserPackages";
     private static final String TAG_TITLEPKG = "Title_pkghn";
     private static final String TAG_SERVICECARRIER = "ServiceCarrier_pkghn";
@@ -101,9 +100,11 @@ public class MainScreenActivity extends Activity implements OnClickListener
         {
             case R.id.btnHeaderLeft:
             {
-                Intent intUserProfile = new Intent(MainScreenActivity.this, UserProfileActivity.class);
-                finish();
-                startActivity(intUserProfile);
+
+                new getUserPackagesCount().execute();
+//                Intent intUserProfile = new Intent(MainScreenActivity.this, UserProfileActivity.class);
+//                finish();
+//                startActivity(intUserProfile);
 
                 break;
             }
@@ -250,50 +251,41 @@ public class MainScreenActivity extends Activity implements OnClickListener
         {
             // TODO Auto-generated method stub
             // here Check for success tag
-            int success;
-
-            String UserID = GlobalVars.GVRole;
+//            int success;
+//
+//            String ongoingpkghn;
+//
+//            String IDUser = GlobalVars.GVUserID;
 
             try
             {
+                //int success;
+
+                String ongoingpkghn;
+
+                String IDUser = GlobalVars.GVUserID;
+
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
-                params.add(new BasicNameValuePair("UserID", UserID));
+                params.add(new BasicNameValuePair("IDUser", IDUser));
 
                 Log.d("request!", "starting");
 
                 JSONObject json = jsonParser.makeHttpRequest(GET_USER_ONGOING_PACKAGES_URL, "POST", params);
 
                 // checking  log for json response
-                Log.d("Login attempt", json.toString());
+                Log.d("Count attempt", json.toString());
 
                 // success tag for json
-                success = json.getInt(TAG_SUCCESS);
+                //success = json.getInt(TAG_SUCCESS);
+                ongoingpkghn = json.getString(TAG_ONGOINGCOUNTHN);
 
-                switch (success)
-                {
-                    case 0:
-                    {
-                        Log.d("Invalid Credentials", json.toString());
+                Log.d("Package Count!", json.toString());
 
-                        Toast.makeText(MainScreenActivity.this, "TEST", Toast.LENGTH_SHORT).show();
+                txtOngoingPackagesHN.setText(ongoingpkghn);
 
-                        return json.getString(TAG_MESSAGE);
-                    }
+                Toast.makeText(MainScreenActivity.this, GlobalVars.GVUsername + " || " + GlobalVars.GVUserID, Toast.LENGTH_SHORT).show();
 
-                    case 1:
-                    {
-                        Log.d("Successful Login!", json.toString());
-
-                        txtOngoingPackagesHN.setText(TAG_SUCCESS);
-
-                        return json.getString(TAG_MESSAGE);
-                    }
-
-                    default:
-
-                        break;
-
-                }
+                //return json.getString(TAG_MESSAGE);
             }
             catch (JSONException e)
             {
@@ -309,7 +301,6 @@ public class MainScreenActivity extends Activity implements OnClickListener
 
         protected void onPostExecute(String message)
         {
-
             pDialog.dismiss();
 
             if (message != null)

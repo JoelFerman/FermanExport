@@ -8,7 +8,6 @@ import android.view.View.OnClickListener;
 
 public class PackageDetailsDeliveryTeamActivity extends Activity implements OnClickListener
 {
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

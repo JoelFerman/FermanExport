@@ -40,6 +40,7 @@ public class LoginScreenActivity extends Activity implements OnClickListener
     private static final String TAG_USERID = "ID_USER";
     private static final String TAG_USERNAME = "USERNAME_USER";
     private static final String TAG_ROLE = "ROLE_USER";
+    private static final String TAG_PASSWROD = "PASSWORD_USER";
 
     String GVUsername, GVRole, GVUserID;
 
@@ -102,9 +103,23 @@ public class LoginScreenActivity extends Activity implements OnClickListener
 
             case R.id.btnForgotPassword:
 
-                Intent intLSbtnForgotPassword = new Intent(LoginScreenActivity.this, ForgotPasswordActivity.class);
-                finish();
-                startActivity(intLSbtnForgotPassword);
+                String passy = "MagmaDice87FE";
+                String passy1 = "MagmaDice87FE";
+                String passy2 = "Magmadice87FE";
+                String passy3 = "MagmaDice87FE";
+
+                if (passy.toString().contentEquals(passy1) && passy2.toString().contentEquals(passy3))
+                {
+                    Toast.makeText(LoginScreenActivity.this, "passy == passy1", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(LoginScreenActivity.this, "passy != passy1", Toast.LENGTH_SHORT).show();
+                }
+
+//                Intent intLSbtnForgotPassword = new Intent(LoginScreenActivity.this, ForgotPasswordActivity.class);
+//                finish();
+//                startActivity(intLSbtnForgotPassword);
 
                 break;
 
@@ -175,81 +190,90 @@ public class LoginScreenActivity extends Activity implements OnClickListener
                 GVUserID = json.getString(TAG_USERID);
                 GVUsername = json.getString(TAG_USERNAME);
                 GVRole = json.getString(TAG_ROLE);
+                String pass1 = json.getString(TAG_PASSWROD);
+                String user1 = json.getString(TAG_USERNAME);
 
-                switch (success)
-                {
-                    case 0:
+                    switch (success)
                     {
-                        Log.d("Invalid Credentials", json.toString());
+                        case 0:
 
-                        Toast.makeText(LoginScreenActivity.this, "TEST", Toast.LENGTH_SHORT).show();
+                            Log.d("Invalid Credentials", json.toString());
 
-                        return json.getString(TAG_MESSAGE);
-                    }
+                            Toast.makeText(LoginScreenActivity.this, "TEST", Toast.LENGTH_SHORT).show();
 
-                    case 1:
-                    {
-                        Log.d("Successful Login!", json.toString());
+                            break;
 
-                        switch (GVRole)
-                        {
-                            case "ADMIN":
+                        case 1:
 
-                                Intent intMainScreenAdmin = new Intent(LoginScreenActivity.this, MainScreenAdminActivity.class);
-                                GlobalVars.GVUsername = GVUsername;
-                                GlobalVars.GVRole = GVRole;
-                                GlobalVars.GVUserID = GVUserID;
-                                finish();
-                                startActivity(intMainScreenAdmin);
+                            if (pass.getText().toString().contentEquals(pass1) && user.getText().toString().contentEquals(user1))
+                            {
+                                Log.d("Successful Login!", json.toString());
+
+                                switch (GVRole)
+                                {
+                                    case "ADMIN":
+
+                                        Intent intMainScreenAdmin = new Intent(LoginScreenActivity.this, MainScreenAdminActivity.class);
+                                        GlobalVars.GVUsername = GVUsername;
+                                        GlobalVars.GVRole = GVRole;
+                                        GlobalVars.GVUserID = GVUserID;
+                                        finish();
+                                        startActivity(intMainScreenAdmin);
+
+                                        break;
+
+                                    case "CLIENTHN":
+
+                                        Intent intMainScreenClientHN = new Intent(LoginScreenActivity.this, MainScreenActivity.class);
+                                        GlobalVars.GVUsername = GVUsername;
+                                        GlobalVars.GVRole = GVRole;
+                                        GlobalVars.GVUserID = GVUserID;
+                                        finish();
+                                        startActivity(intMainScreenClientHN);
+
+                                        break;
+
+                                    case "CLIENTUSA":
+
+                                        Intent intMainScreenClientUSA = new Intent(LoginScreenActivity.this, MainScreenClientUSAActivity.class);
+                                        GlobalVars.GVUsername = GVUsername;
+                                        GlobalVars.GVRole = GVRole;
+                                        GlobalVars.GVUserID = GVUserID;
+                                        finish();
+                                        startActivity(intMainScreenClientUSA);
+
+                                        break;
+
+                                    case "MANAGER":
+
+                                        Intent intMainScreenManager = new Intent(LoginScreenActivity.this, MainScreenManagerActivity.class);
+                                        GlobalVars.GVUsername = GVUsername;
+                                        GlobalVars.GVRole = GVRole;
+                                        GlobalVars.GVUserID = GVUserID;
+                                        finish();
+                                        startActivity(intMainScreenManager);
+
+                                        break;
+
+                                    default:
+
+                                        break;
+                                }
+
+                                return json.getString(TAG_MESSAGE);
+                            }
+                            else
+                            {
+                                Toast.makeText(LoginScreenActivity.this, "Credentials don't match", Toast.LENGTH_LONG).show();
 
                                 break;
-
-                            case "CLIENTHN":
-
-                                Intent intMainScreenClientHN = new Intent(LoginScreenActivity.this, MainScreenActivity.class);
-                                GlobalVars.GVUsername = GVUsername;
-                                GlobalVars.GVRole = GVRole;
-                                GlobalVars.GVUserID = GVUserID;
-                                finish();
-                                startActivity(intMainScreenClientHN);
-
-                                break;
-
-                            case "CLIENTUSA":
-
-                                Intent intMainScreenClientUSA = new Intent(LoginScreenActivity.this, MainScreenClientUSAActivity.class);
-                                GlobalVars.GVUsername = GVUsername;
-                                GlobalVars.GVRole = GVRole;
-                                GlobalVars.GVUserID = GVUserID;
-                                finish();
-                                startActivity(intMainScreenClientUSA);
-
-                                break;
-
-                            case "MANAGER":
-
-                                Intent intMainScreenManager = new Intent(LoginScreenActivity.this, MainScreenManagerActivity.class);
-                                GlobalVars.GVUsername = GVUsername;
-                                GlobalVars.GVRole = GVRole;
-                                GlobalVars.GVUserID = GVUserID;
-                                finish();
-                                startActivity(intMainScreenManager);
-
-                                break;
+                            }
 
                             default:
 
                                 break;
-                        }
 
-                        return json.getString(TAG_MESSAGE);
                     }
-
-                    default:
-
-                        break;
-
-                }
             }
             catch (JSONException e)
             {

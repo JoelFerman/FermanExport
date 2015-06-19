@@ -69,7 +69,7 @@ public class PackageDetailsActivity extends Activity implements OnClickListener
 
         txtCenterTitle.setText(GlobalVars.GVUsername);
 
-        new GetPackageInfo().execute();
+        //new GetPackageInfo().execute();
 
         btnHeaderLeft.setOnClickListener(this);
         btnHeaderRight.setOnClickListener(this);
@@ -82,9 +82,65 @@ public class PackageDetailsActivity extends Activity implements OnClickListener
         {
             case R.id.btnHeaderLeft:
 
-                Intent intPackageDetails = new Intent(PackageDetailsActivity.this, MainScreenActivity.class);
-                finish();
-                startActivity(intPackageDetails);
+                switch (GlobalVars.GVRole)
+                {
+                    case "ADMIN":
+
+                        Intent intBackMainScreenAdmin = new Intent(PackageDetailsActivity.this, MainScreenAdminActivity.class);
+                        //EditableText();
+                        //ClearUserInfo();
+                        finish();
+                        startActivity(intBackMainScreenAdmin);
+
+                        break;
+
+                    case "CLIENTHN":
+
+                        Intent intBackMainScreen = new Intent(PackageDetailsActivity.this, MainScreenActivity.class);
+                        //EditableText();
+                        //ClearUserInfo();
+                        finish();
+                        startActivity(intBackMainScreen);
+
+                        break;
+
+                    case "CLIENTUSA":
+
+                        Intent intBackMainScreenUSA = new Intent(PackageDetailsActivity.this, MainScreenClientUSAActivity.class);
+                        //EditableText();
+                        //ClearUserInfo();
+                        finish();
+                        startActivity(intBackMainScreenUSA);
+
+                        break;
+
+                    case "MANAGER":
+
+                        Intent intBackMainScreenManager = new Intent(PackageDetailsActivity.this, MainScreenManagerActivity.class);
+                        //EditableText();
+                        //ClearUserInfo();
+                        finish();
+                        startActivity(intBackMainScreenManager);
+
+                        break;
+
+                    case "DELIVERYTEAM":
+
+                        Intent intBackMainScreenDeliveryTeam = new Intent(PackageDetailsActivity.this, MainScreenDeliveryTeamActivity.class);
+                        //EditableText();
+                        //ClearUserInfo();
+                        finish();
+                        startActivity(intBackMainScreenDeliveryTeam);
+
+                        break;
+
+                    default:
+
+                        break;
+                }
+//                Intent intPackageDetails = new Intent(PackageDetailsActivity.this, MainScreenActivity.class);
+//                finish();
+//                startActivity(intPackageDetails);
 
                 break;
 
