@@ -76,6 +76,12 @@ public class PackageDetailsActivity extends Activity implements OnClickListener
     }
 
     @Override
+    public void onBackPressed()
+    {
+
+    }
+
+    @Override
     public void onClick(View v)
     {
         switch (v.getId())

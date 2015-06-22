@@ -38,11 +38,14 @@ public class LoginScreenActivity extends Activity implements OnClickListener
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
     private static final String TAG_USERID = "ID_USER";
+    private static final String TAG_FULLNAME = "FULLNAME_USER";
     private static final String TAG_USERNAME = "USERNAME_USER";
+    private static final String TAG_PASSWORD = "PASSWORD_USER";
+    private static final String TAG_EMAIL = "EMAIL_USER";
+    private static final String TAG_PHONENUMBER = "PHONENUMBER_USER";
     private static final String TAG_ROLE = "ROLE_USER";
-    private static final String TAG_PASSWROD = "PASSWORD_USER";
 
-    String GVUsername, GVRole, GVUserID;
+    String GVUserID, GVFullName, GVUsername, GVEmail, GVPhoneNumber, GVRole ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -103,23 +106,9 @@ public class LoginScreenActivity extends Activity implements OnClickListener
 
             case R.id.btnForgotPassword:
 
-                String passy = "MagmaDice87FE";
-                String passy1 = "MagmaDice87FE";
-                String passy2 = "Magmadice87FE";
-                String passy3 = "MagmaDice87FE";
-
-                if (passy.toString().contentEquals(passy1) && passy2.toString().contentEquals(passy3))
-                {
-                    Toast.makeText(LoginScreenActivity.this, "passy == passy1", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    Toast.makeText(LoginScreenActivity.this, "passy != passy1", Toast.LENGTH_SHORT).show();
-                }
-
-//                Intent intLSbtnForgotPassword = new Intent(LoginScreenActivity.this, ForgotPasswordActivity.class);
-//                finish();
-//                startActivity(intLSbtnForgotPassword);
+                Intent intLSbtnForgotPassword = new Intent(LoginScreenActivity.this, ForgotPasswordActivity.class);
+                finish();
+                startActivity(intLSbtnForgotPassword);
 
                 break;
 
@@ -185,27 +174,32 @@ public class LoginScreenActivity extends Activity implements OnClickListener
                 // checking  log for json response
                 Log.d("Login attempt", json.toString());
 
-                // success tag for json
+                // Get and Store Data From JSON
                 success = json.getInt(TAG_SUCCESS);
                 GVUserID = json.getString(TAG_USERID);
+                GVFullName = json.getString(TAG_FULLNAME);
                 GVUsername = json.getString(TAG_USERNAME);
+                GVEmail = json.getString(TAG_EMAIL);
+                GVPhoneNumber = json.getString(TAG_PHONENUMBER);
                 GVRole = json.getString(TAG_ROLE);
-                String pass1 = json.getString(TAG_PASSWROD);
-                String user1 = json.getString(TAG_USERNAME);
+
+                // Variables To Compare Credentials
+                String passCompare = json.getString(TAG_PASSWORD);
+                String userCompare = json.getString(TAG_USERNAME);
 
                     switch (success)
                     {
                         case 0:
 
-                            Log.d("Invalid Credentials", json.toString());
-
                             Toast.makeText(LoginScreenActivity.this, "TEST", Toast.LENGTH_SHORT).show();
+
+                            Log.d("Invalid Credentials", json.toString());
 
                             break;
 
                         case 1:
 
-                            if (pass.getText().toString().contentEquals(pass1) && user.getText().toString().contentEquals(user1))
+                            if (pass.getText().toString().contentEquals(passCompare) && user.getText().toString().contentEquals(userCompare))
                             {
                                 Log.d("Successful Login!", json.toString());
 
@@ -213,45 +207,81 @@ public class LoginScreenActivity extends Activity implements OnClickListener
                                 {
                                     case "ADMIN":
 
-                                        Intent intMainScreenAdmin = new Intent(LoginScreenActivity.this, MainScreenAdminActivity.class);
-                                        GlobalVars.GVUsername = GVUsername;
-                                        GlobalVars.GVRole = GVRole;
+                                        // Add User Information on Global Variables
                                         GlobalVars.GVUserID = GVUserID;
-                                        finish();
+                                        GlobalVars.GVFullName = GVFullName;
+                                        GlobalVars.GVUsername = GVUsername;
+                                        GlobalVars.GVEmail = GVEmail;
+                                        GlobalVars.GVPhoneNumber = GVPhoneNumber;
+                                        GlobalVars.GVRole = GVRole;
+
+                                        Intent intMainScreenAdmin = new Intent(LoginScreenActivity.this, MainScreenAdminActivity.class);
+                                        LoginScreenActivity.this.finish();
                                         startActivity(intMainScreenAdmin);
 
                                         break;
 
                                     case "CLIENTHN":
 
-                                        Intent intMainScreenClientHN = new Intent(LoginScreenActivity.this, MainScreenActivity.class);
-                                        GlobalVars.GVUsername = GVUsername;
-                                        GlobalVars.GVRole = GVRole;
+                                        // Add User Information on Global Variables
                                         GlobalVars.GVUserID = GVUserID;
-                                        finish();
+                                        GlobalVars.GVFullName = GVFullName;
+                                        GlobalVars.GVUsername = GVUsername;
+                                        GlobalVars.GVEmail = GVEmail;
+                                        GlobalVars.GVPhoneNumber = GVPhoneNumber;
+                                        GlobalVars.GVRole = GVRole;
+
+                                        Intent intMainScreenClientHN = new Intent(LoginScreenActivity.this, MainScreenActivity.class);
+                                        LoginScreenActivity.this.finish();
                                         startActivity(intMainScreenClientHN);
 
                                         break;
 
                                     case "CLIENTUSA":
 
-                                        Intent intMainScreenClientUSA = new Intent(LoginScreenActivity.this, MainScreenClientUSAActivity.class);
-                                        GlobalVars.GVUsername = GVUsername;
-                                        GlobalVars.GVRole = GVRole;
+                                        // Add User Information on Global Variables
                                         GlobalVars.GVUserID = GVUserID;
-                                        finish();
+                                        GlobalVars.GVFullName = GVFullName;
+                                        GlobalVars.GVUsername = GVUsername;
+                                        GlobalVars.GVEmail = GVEmail;
+                                        GlobalVars.GVPhoneNumber = GVPhoneNumber;
+                                        GlobalVars.GVRole = GVRole;
+
+                                        Intent intMainScreenClientUSA = new Intent(LoginScreenActivity.this, MainScreenClientUSAActivity.class);
+                                        LoginScreenActivity.this.finish();
                                         startActivity(intMainScreenClientUSA);
 
                                         break;
 
                                     case "MANAGER":
 
-                                        Intent intMainScreenManager = new Intent(LoginScreenActivity.this, MainScreenManagerActivity.class);
-                                        GlobalVars.GVUsername = GVUsername;
-                                        GlobalVars.GVRole = GVRole;
+                                        // Add User Information on Global Variables
                                         GlobalVars.GVUserID = GVUserID;
-                                        finish();
+                                        GlobalVars.GVFullName = GVFullName;
+                                        GlobalVars.GVUsername = GVUsername;
+                                        GlobalVars.GVEmail = GVEmail;
+                                        GlobalVars.GVPhoneNumber = GVPhoneNumber;
+                                        GlobalVars.GVRole = GVRole;
+
+                                        Intent intMainScreenManager = new Intent(LoginScreenActivity.this, MainScreenManagerActivity.class);
+                                        LoginScreenActivity.this.finish();
                                         startActivity(intMainScreenManager);
+
+                                        break;
+
+                                    case "DELIVERYTEAM":
+
+                                        // Add User Information on Global Variables
+                                        GlobalVars.GVUserID = GVUserID;
+                                        GlobalVars.GVFullName = GVFullName;
+                                        GlobalVars.GVUsername = GVUsername;
+                                        GlobalVars.GVEmail = GVEmail;
+                                        GlobalVars.GVPhoneNumber = GVPhoneNumber;
+                                        GlobalVars.GVRole = GVRole;
+
+                                        Intent intMainScreenDeliveryTeam = new Intent(LoginScreenActivity.this, MainScreenDeliveryTeamActivity.class);
+                                        LoginScreenActivity.this.finish();
+                                        startActivity(intMainScreenDeliveryTeam);
 
                                         break;
 
@@ -262,7 +292,7 @@ public class LoginScreenActivity extends Activity implements OnClickListener
 
                                 return json.getString(TAG_MESSAGE);
                             }
-                            else
+                            else if (!pass.getText().toString().contentEquals(passCompare) && user.getText().toString().contentEquals(userCompare))
                             {
                                 Toast.makeText(LoginScreenActivity.this, "Credentials don't match", Toast.LENGTH_LONG).show();
 

@@ -230,7 +230,7 @@ public class RegisterActivity extends Activity implements OnClickListener, OnIte
             String Username = txtSIUsername.getText().toString();
             String Password = txtSIPassword.getText().toString();
             String Email = txtSIEmail.getText().toString();
-            String Phone = txtSIPhoneNumber.getText().toString();
+            String Phone = "+504" + txtSIPhoneNumber.getText().toString();
             String Role = GlobalVars.GVAddRole;
 
             try

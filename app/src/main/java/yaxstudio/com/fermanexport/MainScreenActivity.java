@@ -82,6 +82,8 @@ public class MainScreenActivity extends Activity implements OnClickListener
 
         new getUserPackages().execute();
 
+        txtOngoingPackagesHN.setText(GlobalVars.GVUsername);
+
         btnHeaderLeft.setOnClickListener(this);
         btnHeaderRight.setOnClickListener(this);
         btnAddPackage.setOnClickListener(this);
@@ -101,10 +103,10 @@ public class MainScreenActivity extends Activity implements OnClickListener
             case R.id.btnHeaderLeft:
             {
 
-                new getUserPackagesCount().execute();
-//                Intent intUserProfile = new Intent(MainScreenActivity.this, UserProfileActivity.class);
-//                finish();
-//                startActivity(intUserProfile);
+                //new getUserPackagesCount().execute();
+                Intent intUserProfile = new Intent(MainScreenActivity.this, UserProfileActivity.class);
+                this.finish();
+                startActivity(intUserProfile);
 
                 break;
             }
@@ -123,7 +125,7 @@ public class MainScreenActivity extends Activity implements OnClickListener
             case R.id.btnAddPackage:
             {
                 Intent intAddPackage = new Intent(MainScreenActivity.this, AddPackageActivity.class);
-                finish();
+                this.finish();
                 startActivity(intAddPackage);
 
                 break;
@@ -145,9 +147,9 @@ public class MainScreenActivity extends Activity implements OnClickListener
         {
             super.onPreExecute();
 
-            txtLSTTitle = (TextView)findViewById(R.id.txtPackageTitle);
-            txtLSTServiceCarrier = (TextView)findViewById(R.id.txtPackageServiceCarrier);
-            txtLSTTrackingNumber = (TextView)findViewById(R.id.txtPackageTrackingNumber);
+            txtLSTTitle = (TextView)findViewById(R.id.txtPackageLine1);
+            txtLSTServiceCarrier = (TextView)findViewById(R.id.txtPackageLine2);
+            txtLSTTrackingNumber = (TextView)findViewById(R.id.txtPackageLine3);
 
             pDialog = new ProgressDialog(MainScreenActivity.this);
             pDialog.setMessage("Getting Data ...");
@@ -187,7 +189,7 @@ public class MainScreenActivity extends Activity implements OnClickListener
                     JSONObject c = arrayUserPackages.getJSONObject(i);
 
                     // Storing  JSON item in a Variable
-                    String title = c.getString(TAG_TITLEPKG);
+                    final String title = c.getString(TAG_TITLEPKG);
                     String serviceCarrier = c.getString(TAG_SERVICECARRIER);
                     String trackingNumber = c.getString(TAG_TRACKINGNUMBER);
 
@@ -202,7 +204,7 @@ public class MainScreenActivity extends Activity implements OnClickListener
                     oslist.add(map);
                     lstMSUserPackage=(ListView)findViewById(R.id.lstMSUserPackage);
 
-                    ListAdapter adapter = new SimpleAdapter(MainScreenActivity.this, oslist, R.layout.list_v, new String[] { TAG_TITLEPKG,TAG_SERVICECARRIER, TAG_TRACKINGNUMBER }, new int[] {R.id.txtPackageTitle,R.id.txtPackageServiceCarrier, R.id.txtPackageTrackingNumber});
+                    ListAdapter adapter = new SimpleAdapter(MainScreenActivity.this, oslist, R.layout.list_v, new String[] { TAG_TITLEPKG,TAG_SERVICECARRIER, TAG_TRACKINGNUMBER }, new int[] {R.id.txtPackageLine1,R.id.txtPackageLine2, R.id.txtPackageLine3});
 
                     lstMSUserPackage.setAdapter(adapter);
 
@@ -213,10 +215,10 @@ public class MainScreenActivity extends Activity implements OnClickListener
                         {
 
                             Intent intLSTItemDetails = new Intent(MainScreenActivity.this, PackageDetailsActivity.class);
-                            finish();
+                            MainScreenActivity.this.finish();
                             startActivity(intLSTItemDetails);
 
-                            Toast.makeText(MainScreenActivity.this, "You clicked at " + oslist.get(+position).get("Title_pkghn"), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainScreenActivity.this, "You clicked at " + oslist.get(+position).get(title), Toast.LENGTH_SHORT).show();
                         }
                     });
                 }

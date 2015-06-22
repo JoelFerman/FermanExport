@@ -16,6 +16,12 @@ public class RegisterEmployeeActivity extends Activity implements OnClickListene
     }
 
     @Override
+    public void onBackPressed()
+    {
+
+    }
+
+    @Override
     public void onClick(View v)
     {
 

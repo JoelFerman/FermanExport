@@ -81,7 +81,7 @@ public class AddPackageActivity extends Activity implements OnClickListener
             case R.id.btnHeaderLeft:
 
                 Intent intAddPackageBack = new Intent(AddPackageActivity.this, MainScreenActivity.class);
-                finish();
+                this.finish();
                 startActivity(intAddPackageBack);
 
                 break;

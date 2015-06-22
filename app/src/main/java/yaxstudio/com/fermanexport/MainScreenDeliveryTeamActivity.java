@@ -15,6 +15,12 @@ public class MainScreenDeliveryTeamActivity extends Activity implements OnClickL
     }
 
     @Override
+    public void onBackPressed()
+    {
+
+    }
+
+    @Override
     public void onClick(View v)
     {
 

@@ -35,6 +35,12 @@ public class MainScreenManagerActivity extends Activity implements OnClickListen
     }
 
     @Override
+    public void onBackPressed()
+    {
+
+    }
+
+    @Override
     public void onClick(View v)
     {
         switch (v.getId())
@@ -42,7 +48,7 @@ public class MainScreenManagerActivity extends Activity implements OnClickListen
             case R.id.btnHeaderLeft:
 
                 Intent intUserProfile = new Intent(MainScreenManagerActivity.this, UserProfileActivity.class);
-                finish();
+                this.finish();
                 startActivity(intUserProfile);
 
                 break;

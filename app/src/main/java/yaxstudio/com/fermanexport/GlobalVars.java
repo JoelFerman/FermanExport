@@ -1,15 +1,13 @@
 package yaxstudio.com.fermanexport;
 
-import java.util.Random;
-
 public class GlobalVars
 {
     //User Credentials
-    public static String GVUserID, GVUsername, GVRole;
+    public static String GVUserID, GVFullName, GVUsername, GVEmail, GVPhoneNumber, GVRole;
 
     //Register User
     public static String GVAddRole;
 
     // Global Variables
-    public static String GVTokenHN;
+    public static String GVTokenHN, GVTokenUSA;
 }

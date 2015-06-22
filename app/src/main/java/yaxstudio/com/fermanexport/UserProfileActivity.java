@@ -25,7 +25,7 @@ public class UserProfileActivity extends Activity implements OnClickListener
 {
     ImageView btnHeaderLeft, btnHeaderRight;
     TextView txtCenterTitle, txtUPUserID, txtUPUserRole;
-    EditText txtUPFullname, txtUPUsername, txtUPEmail, txtUPPhoneNumber;
+    EditText txtUPFullName, txtUPUsername, txtUPEmail, txtUPPhoneNumber;
 
     int tagID = 1;
 
@@ -59,19 +59,21 @@ public class UserProfileActivity extends Activity implements OnClickListener
         txtUPUserID = (TextView) findViewById(R.id.txtUPUserID);
         txtUPUserRole = (TextView) findViewById(R.id.txtUPUserRole);
 
-        txtUPFullname = (EditText) findViewById(R.id.txtUPFullName);
+        txtUPFullName = (EditText) findViewById(R.id.txtUPFullName);
         txtUPUsername = (EditText) findViewById(R.id.txtUPUsername);
         txtUPEmail = (EditText) findViewById(R.id.txtUPEmail);
         txtUPPhoneNumber = (EditText) findViewById(R.id.txtUPPhoneNumber);
 
-        EditableText();
+        //EditableText();
 
         btnHeaderLeft.setImageResource(R.drawable.ic_arrow_back);
         btnHeaderRight.setImageResource(R.drawable.ic_mode_edit);
 
         new GetUserInfo().execute();
 
-        NonEditableText();
+        //FillInfo();
+
+        //NonEditableText();
 
         btnHeaderLeft.setOnClickListener(this);
         btnHeaderRight.setOnClickListener(this);
@@ -95,9 +97,9 @@ public class UserProfileActivity extends Activity implements OnClickListener
                     case "ADMIN":
 
                         Intent intBackMainScreenAdmin = new Intent(UserProfileActivity.this, MainScreenAdminActivity.class);
-                        EditableText();
+                        //EditableText();
                         ClearUserInfo();
-                        finish();
+                        this.finish();
                         startActivity(intBackMainScreenAdmin);
 
                         break;
@@ -105,9 +107,9 @@ public class UserProfileActivity extends Activity implements OnClickListener
                     case "CLIENTHN":
 
                         Intent intBackMainScreen = new Intent(UserProfileActivity.this, MainScreenActivity.class);
-                        EditableText();
+                        //EditableText();
                         ClearUserInfo();
-                        finish();
+                        this.finish();
                         startActivity(intBackMainScreen);
 
                         break;
@@ -115,9 +117,9 @@ public class UserProfileActivity extends Activity implements OnClickListener
                     case "CLIENTUSA":
 
                         Intent intBackMainScreenUSA = new Intent(UserProfileActivity.this, MainScreenClientUSAActivity.class);
-                        EditableText();
+                        //EditableText();
                         ClearUserInfo();
-                        finish();
+                        this.finish();
                         startActivity(intBackMainScreenUSA);
 
                         break;
@@ -125,9 +127,9 @@ public class UserProfileActivity extends Activity implements OnClickListener
                     case "MANAGER":
 
                         Intent intBackMainScreenManager = new Intent(UserProfileActivity.this, MainScreenManagerActivity.class);
-                        EditableText();
+                        //EditableText();
                         ClearUserInfo();
-                        finish();
+                        this.finish();
                         startActivity(intBackMainScreenManager);
 
                         break;
@@ -135,9 +137,9 @@ public class UserProfileActivity extends Activity implements OnClickListener
                     case "DELIVERYTEAM":
 
                         Intent intBackMainScreenDeliveryTeam = new Intent(UserProfileActivity.this, MainScreenDeliveryTeamActivity.class);
-                        EditableText();
+                        //EditableText();
                         ClearUserInfo();
-                        finish();
+                        this.finish();
                         startActivity(intBackMainScreenDeliveryTeam);
 
                         break;
@@ -186,12 +188,12 @@ public class UserProfileActivity extends Activity implements OnClickListener
 
     public void NonEditableText()
     {
-        txtUPFullname.setEnabled(false);
+        txtUPFullName.setEnabled(false);
         txtUPUsername.setEnabled(false);
         txtUPEmail.setEnabled(false);
         txtUPPhoneNumber.setEnabled(false);
 
-        txtUPFullname.setClickable(false);
+        txtUPFullName.setClickable(false);
         txtUPUsername.setClickable(false);
         txtUPEmail.setClickable(false);
         txtUPPhoneNumber.setClickable(false);
@@ -199,12 +201,12 @@ public class UserProfileActivity extends Activity implements OnClickListener
 
     public void EditableText()
     {
-        txtUPFullname.setEnabled(true);
+        txtUPFullName.setEnabled(true);
         txtUPUsername.setEnabled(true);
         txtUPEmail.setEnabled(true);
         txtUPPhoneNumber.setEnabled(true);
 
-        txtUPFullname.setClickable(true);
+        txtUPFullName.setClickable(true);
         txtUPUsername.setClickable(true);
         txtUPEmail.setClickable(true);
         txtUPPhoneNumber.setClickable(true);
@@ -214,7 +216,7 @@ public class UserProfileActivity extends Activity implements OnClickListener
     {
         txtUPUserID.setText("");
         txtUPUserRole.setText("");
-        txtUPFullname.setText("");
+        txtUPFullName.setText("");
         txtUPUsername.setText("");
         txtUPEmail.setText("");
         txtUPPhoneNumber.setText("");
@@ -224,6 +226,16 @@ public class UserProfileActivity extends Activity implements OnClickListener
     {
         txtUPEmail.setEnabled(true);
         txtUPPhoneNumber.setEnabled(true);
+    }
+
+    public void FillInfo()
+    {
+        txtUPUserID.setText(GlobalVars.GVUserID);
+        txtUPFullName.setText(GlobalVars.GVFullName);
+        txtUPUsername.setText(GlobalVars.GVUsername);
+        txtUPEmail.setText(GlobalVars.GVEmail);
+        txtUPPhoneNumber.setText(GlobalVars.GVPhoneNumber);
+        txtUPUserRole.setText(GlobalVars.GVRole);
     }
 
     class GetUserInfo extends AsyncTask<String, String, String>
@@ -250,7 +262,7 @@ public class UserProfileActivity extends Activity implements OnClickListener
         {
             // TODO Auto-generated method stub
             // here Check for success tag
-            int success;
+            //int success;
 
             String Username = GlobalVars.GVUsername;
 
@@ -263,28 +275,50 @@ public class UserProfileActivity extends Activity implements OnClickListener
 
                 JSONObject json = jsonParser.makeHttpRequest(USER_INFO_URL, "POST", params);
 
+                String UserID = json.getString(TAG_USERID);
+                String UserRole = json.getString(TAG_ROLE);
+                String UserFullName = json.getString(TAG_FULLNAME);
+                String UserUsername = json.getString(TAG_USERNAME);
+                String UserEmail = json.getString(TAG_EMAIL);
+                String UserPhone = json.getString(TAG_PHONE);
+
                 // checking  log for json response
                 Log.d("Login attempt", json.toString());
 
                 // success tag for json
-                success = json.getInt(TAG_SUCCESS);
+                int success = json.getInt(TAG_SUCCESS);
 
-                if (success == 1)
+                switch (success)
                 {
-                    txtUPUserID.setText(json.getString(TAG_USERID));
-                    txtUPUserRole.setText(json.getString(TAG_ROLE));
-                    txtUPFullname.setText(json.getString(TAG_FULLNAME));
-                    txtUPUsername.setText(json.getString(TAG_USERNAME));
-                    txtUPEmail.setText(json.getString(TAG_EMAIL));
-                    txtUPPhoneNumber.setText(json.getString(TAG_PHONE));
+                    case 1:
 
-                    return json.getString(TAG_MESSAGE);
-                }
-                else
-                {
-                    return json.getString(TAG_MESSAGE);
-                }
+                        txtUPUserID.setText(UserID.toString());
+                        txtUPUserRole.setText(UserRole.toString());
+                        txtUPFullName.setText(UserFullName.toString());
+                        txtUPUsername.setText(UserUsername.toString());
+                        txtUPEmail.setText(UserEmail.toString());
+                        txtUPPhoneNumber.setText(UserPhone.toString());
 
+                        //return json.getString(TAG_MESSAGE);
+
+                    break;
+
+                    case 0:
+
+                        return json.getString(TAG_MESSAGE);
+
+                    default:
+
+                        break;
+                }
+//                if (success == 1)
+//                {
+//
+//                }
+//                else
+//                {
+//
+//                }
             }
             catch (JSONException e)
             {
@@ -301,14 +335,12 @@ public class UserProfileActivity extends Activity implements OnClickListener
 
         protected void onPostExecute(String message)
         {
-
             pDialog.dismiss();
 
             if (message != null)
             {
                 Toast.makeText(UserProfileActivity.this, message, Toast.LENGTH_LONG).show();
             }
-
         }
     }
 

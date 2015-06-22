@@ -28,7 +28,6 @@ import java.util.List;
 
 public class MainScreenClientUSAActivity extends Activity implements OnClickListener
 {
-    ImageButton btnAddPackageUSA;
     ImageView btnHeaderRight, btnHeaderLeft;
     TextView txtCenterTitle, txtLSTID, txtLSTReceiver, txtLSTSender;
     ListView lstMSUSAPackage;
@@ -57,8 +56,6 @@ public class MainScreenClientUSAActivity extends Activity implements OnClickList
 
         txtCenterTitle = (TextView)findViewById(R.id.txtCenterTitle);
 
-        btnAddPackageUSA = (ImageButton)findViewById(R.id.btnAddPackageUSA);
-
         btnHeaderRight.setImageResource(R.drawable.ic_exit_to_app);
         btnHeaderLeft.setImageResource(R.drawable.ic_account_circle);
 
@@ -66,11 +63,14 @@ public class MainScreenClientUSAActivity extends Activity implements OnClickList
 
         new getUserPackagesUSA().execute();
 
-        Toast.makeText(MainScreenClientUSAActivity.this, "IDUser is -> " + GlobalVars.GVUserID + " Username -> " + GlobalVars.GVUsername, Toast.LENGTH_LONG).show();
-
         btnHeaderLeft.setOnClickListener(this);
         btnHeaderRight.setOnClickListener(this);
-        btnAddPackageUSA.setOnClickListener(this);
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+
     }
 
     @Override
@@ -81,7 +81,7 @@ public class MainScreenClientUSAActivity extends Activity implements OnClickList
             case R.id.btnHeaderLeft:
 
                 Intent intUserProfile = new Intent(MainScreenClientUSAActivity.this, UserProfileActivity.class);
-                finish();
+                this.finish();
                 startActivity(intUserProfile);
 
                 break;
@@ -93,14 +93,6 @@ public class MainScreenClientUSAActivity extends Activity implements OnClickList
                 startActivity(intSignOut);
 
                 Toast.makeText(MainScreenClientUSAActivity.this, "You are now signed out!", Toast.LENGTH_SHORT).show();
-
-                break;
-
-            case R.id.btnAddPackageUSA:
-
-                Intent intAddPackageUSA = new Intent(MainScreenClientUSAActivity.this, AddPackageUSAActivity.class);
-                finish();
-                startActivity(intAddPackageUSA);
 
                 break;
 
@@ -119,9 +111,9 @@ public class MainScreenClientUSAActivity extends Activity implements OnClickList
         {
             super.onPreExecute();
 
-            txtLSTID = (TextView)findViewById(R.id.txtPackageTitle);
-            txtLSTReceiver = (TextView)findViewById(R.id.txtPackageServiceCarrier);
-            txtLSTSender = (TextView)findViewById(R.id.txtPackageTrackingNumber);
+            txtLSTID = (TextView)findViewById(R.id.txtPackageLine1);
+            txtLSTReceiver = (TextView)findViewById(R.id.txtPackageLine2);
+            txtLSTSender = (TextView)findViewById(R.id.txtPackageLine3);
 
             pDialog = new ProgressDialog(MainScreenClientUSAActivity.this);
             pDialog.setMessage("Getting Data ...");
@@ -176,7 +168,7 @@ public class MainScreenClientUSAActivity extends Activity implements OnClickList
                     oslist.add(map);
                     lstMSUSAPackage = (ListView)findViewById(R.id.lstMSUSAPackage);
 
-                    ListAdapter adapter = new SimpleAdapter(MainScreenClientUSAActivity.this, oslist, R.layout.list_v, new String[] { TAG_PACKAGEIDUSA,TAG_RECEIVER, TAG_SENDER }, new int[] {R.id.txtPackageTitle,R.id.txtPackageServiceCarrier, R.id.txtPackageTrackingNumber});
+                    ListAdapter adapter = new SimpleAdapter(MainScreenClientUSAActivity.this, oslist, R.layout.list_v, new String[] { TAG_PACKAGEIDUSA,TAG_RECEIVER, TAG_SENDER }, new int[] {R.id.txtPackageLine1,R.id.txtPackageLine2, R.id.txtPackageLine3});
 
                     lstMSUSAPackage.setAdapter(adapter);
 

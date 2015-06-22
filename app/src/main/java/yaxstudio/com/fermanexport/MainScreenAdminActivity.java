@@ -75,4 +75,10 @@ public class MainScreenAdminActivity extends Activity implements OnClickListener
                 break;
         }
     }
+
+    @Override
+    public void onBackPressed()
+    {
+
+    }
 }
